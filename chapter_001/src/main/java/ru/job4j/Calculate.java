@@ -1,16 +1,25 @@
 package ru.job4j;
 /**
- * Class для вычисления арифметических операций + - * / ^.
- * @author ipribytkov
- * @since 09.07.2018
- * @version 1.0
+ * Calculate.
+ *   
+ * @author Ilia Pribytkov (ilya.pribytko@mail.ru)
+ * @version $Id$
+ * @since 1.0
  */
 public class Calculate {
     /**
-     * Конструктор, вывод строки в консоль.
+     * Main.
      * @param args - args.
      */
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.println("Hello world!");
+    }
+    /**
+     * Method echo.
+     * @param name Ilya Pribytkov.
+     * @return  Echo plus Ilya Pribytkov.
+     */
+    public String echo(String name) {
+        return "Echo, echo, echo : " + name;
     }
 }
