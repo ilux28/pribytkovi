@@ -1,5 +1,8 @@
 package ru.job4j.array;
 
+/**
+ * @author ilux28
+ */
 public class TwoSortMass {
     public int[] rezVozr(int[] first, int[] second) {
         int[] result = new int[first.length + second.length];
