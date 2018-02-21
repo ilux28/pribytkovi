@@ -1,5 +1,8 @@
 package ru.job4j.array;
 
+/**
+ * @author Ilya Pribytkov
+ */
 public class ArrayChar {
     private char[] data;
     public ArrayChar(String line) {
