@@ -1,6 +1,15 @@
 package ru.job4j.array;
-
+/**
+ * @author ilux28
+ * @sience $id$
+ * @version 0.1
+ */
 public class Matrix {
+    /**
+     * Создает двумерный квадратный массив
+     * @param size размер
+     * @return возвращает егоже.
+     */
     public int[][] multiple(int size) {
         int[][] table = new int[size][size];
         for (int i = 0; i < size; i++) {
