@@ -12,18 +12,29 @@ public class TwoSortMass {
      */
     public int[] rezVozr(int[] first, int[] second) {
         int[] result = new int[first.length + second.length];
-        int j = 0, k = 0;
+        int j = 0, k = 0, a;
+
         for (int i = 0; i < result.length; i++) {
-
-            if (first[j] < second[k]) {
-                result[i] = first[j];
-                if (j < first.length) j++;
-            } else {
+            if (j > first.length - 1) {
                 result[i] = second[k];
-                if (k < second.length) k++;
+                k++;
+            }else if (k > first.length - 1) {
+                result[i] = first[j];
+                j++;
+            }else if (first[j] < second[k]){
+                result[i] = first[j];
+                j++;
+            }else {
+                result[i] = second[k];
+                k++;
             }
-        } return result;
-
-
+        }return result;
+    }
+    public static void main(String[] args) {
+        int[] a = {0, 2, 4};
+        int[] b = {1, 3, 5};
+        TwoSortMass re = new TwoSortMass();
+        int[] s = re.rezVozr(a, b);
+        System.out.println(s);
     }
 }
