@@ -13,6 +13,16 @@ public class Tracker {
         this.items[position++] = item;
         return item;
     }
+    public void edit(Item fresh){
+        for (int index = 0; index != items.length; ++index) {
+            Item item = items[index];
+            if (item != null && item.getId().equals(fresh.getId())) {
+                System.out.println("log 1");
+                items[index] = fresh;
+                break;
+            }
+        }
+    }
     protected Item findById(String id) {
         Item result = null;
         for (Item item : items) {
