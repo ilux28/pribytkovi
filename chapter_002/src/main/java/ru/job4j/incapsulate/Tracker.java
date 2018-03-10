@@ -60,23 +60,17 @@ public class Tracker {
         }
     }
     public Item[] findAll() {
-        Item[] result = new Item[this.position - 1];;
-        for (int i = 0; i < this.position; i++) {
-            if (this.items[i] == null) {
-                System.arraycopy(this.items, 0, result, 0, i - 1);
-                break;
-            }
-        }
-        return result;
+        return this.items;
     }
     public Item[] findByName(String key) {
         Item[] res = new Item[this.position];
         int j = 0;
         for (int i = 0; i < this.position; i++) {
-            if (this.items[i].getName() == key) {
+            if (this.items[i].getName().equals(key)) {
             System.arraycopy(this.items, i, res, j, 1);
             j++;
             }
         } return res;
     }
 }
+

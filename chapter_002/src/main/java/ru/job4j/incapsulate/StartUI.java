@@ -2,14 +2,16 @@ package ru.job4j.incapsulate;
 
 public class StartUI {
     private Input input;
+    private Tracker tracker;
 
-    public StartUI(Input input) {
+    public StartUI(Input input, Tracker tracker) {
         this.input = input;
+        this.tracker = tracker;
     }
 
     public void init() {
-        Tracker tracker = new Tracker();
-        MenuTracker menu = new MenuTracker(this.input, tracker);
+   //     Tracker tracker = new Tracker();
+        MenuTracker menu = new MenuTracker(this.input, this.tracker);
         menu.fillActions();
 
         do {
@@ -20,7 +22,8 @@ public class StartUI {
     }
     public static void main(String[] args) {
         Input input = new ConsoleInput();
-        new StartUI(input).init();
+        Tracker tracker = new Tracker();
+        new StartUI(input, tracker).init();
     }
 }
 

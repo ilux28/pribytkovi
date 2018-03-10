@@ -1,6 +1,5 @@
 package ru.job4j.incapsulate;
 
-import
 
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
@@ -10,7 +9,7 @@ public class StartUITest {
     @Test
     public void whenAddItemTrackerHasNewItemWithSameName(){
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[] {"0", "test name", "desc", "6"});
+        Input input = new StubInput(new String[] {"0", "test name", "desc", "y"});
         new StartUI(input, tracker).init();
         assertThat(tracker.getAll()[0].getName(), is("test name"));
     }
@@ -21,7 +20,7 @@ public class StartUITest {
         //Напрямую добавляем заявку
         Item item = tracker.add(new Item());
         //создаём StubInput с последовательностью действий
-        Input input = new StubInput(new String[]{"0", item.getId(), "test name", "desc", "6"});
+        Input input = new StubInput(new String[]{"2", item.getId(), "test name", "desc", "y"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.

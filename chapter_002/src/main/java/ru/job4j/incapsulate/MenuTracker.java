@@ -5,7 +5,7 @@ package ru.job4j.incapsulate;
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
-    private UserAction[] actions = new UserAction[5];
+    private UserAction[] actions = new UserAction[6];
 
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
@@ -109,11 +109,11 @@ public class MenuTracker {
             return 5;
         }
         public void execute(Input input, Tracker tracker) {
-            String name = input.ask("Plese, enter the task's id: ");
-            System.out.println(tracker.findByName(name));
+            String name = input.ask("Plese, enter the task's name: ");
+            System.out.println(tracker.findByName(name)[0].getId());
         }
         public String info() {
-            return String.format("%s. %s", this.key(), "Search item with switched id.");
+            return String.format("%s. %s", this.key(), "Search item with switched name.");
         }
     }
 }
