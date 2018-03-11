@@ -1,6 +1,7 @@
 package ru.job4j.incapsulate;
 
 public class StartUI {
+    private int[] ranges = new int[] {1, 2, 3, 4, 5};
     private Input input;
     private Tracker tracker;
 
@@ -16,8 +17,7 @@ public class StartUI {
 
         do {
             menu.show();
-            int key = Integer.valueOf(input.ask("Select"));
-            menu.select(key);
+            menu.select(input.ask("select: ", ranges));
         }   while(!"y".equals(this.input.ask("Exit? y")));
     }
     public static void main(String[] args) {
