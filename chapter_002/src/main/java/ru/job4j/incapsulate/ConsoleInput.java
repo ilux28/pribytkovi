@@ -9,7 +9,7 @@ public class ConsoleInput implements Input {
         System.out.println(question);
         return scanner.nextLine();
     }
-    public int ask(String question, int[] range) {
+    public int ask(String question, int[] range) throws MenuOutException {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
         for (int value : range) {
@@ -18,6 +18,10 @@ public class ConsoleInput implements Input {
                 break;
             }
         }
-        return exist ? key : -1;
+        if (exist) {
+            return key;
+        } else {
+            throw new MenuOutException("Out of Menu range.");
+        }
     }
 }

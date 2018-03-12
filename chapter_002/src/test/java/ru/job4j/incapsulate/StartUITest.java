@@ -7,14 +7,14 @@ import static org.junit.Assert.assertThat;
 
 public class StartUITest {
     @Test
-    public void whenAddItemTrackerHasNewItemWithSameName(){
+    public void whenAddItemTrackerHasNewItemWithSameName() throws MenuOutException {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[] {"0", "test name", "desc", "y"});
         new StartUI(input, tracker).init();
         assertThat(tracker.getAll()[0].getName(), is("test name"));
     }
     @Test
-    public void whenUpdateThenTrackerHasUpdatedValue() {
+    public void whenUpdateThenTrackerHasUpdatedValue() throws MenuOutException {
         // создаём Tracker
         Tracker tracker = new Tracker();
         //Напрямую добавляем заявку
