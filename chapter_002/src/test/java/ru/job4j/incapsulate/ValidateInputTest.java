@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.is;
 /**
  * //TODO add comments.
  *
- * @author Petr Arsentev (parsentev@yandex.ru)
+ * @author Ilux28
  * @version $Id$
  * @since 0.1
  */
