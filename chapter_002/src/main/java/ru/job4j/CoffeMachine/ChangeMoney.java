@@ -14,6 +14,7 @@ public class ChangeMoney {
             } else if (cach == num[num.length - 1 - j]) {
                 result[i] = num[num.length - 1 - j];
                 cach = cach - num[num.length - 1 - j];
+
                 break;
             } else if (num.length - 1 > j){
                 i--;
