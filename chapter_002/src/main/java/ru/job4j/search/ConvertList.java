@@ -1,7 +1,6 @@
 package ru.job4j.search;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ConvertList {
     List<Integer> mass = new ArrayList<>();
@@ -23,8 +22,14 @@ public class ConvertList {
                     ar[j][i] = 0;
                 }
             }
-
         } return ar;
-
+    }
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> lis = new ArrayList<Integer>();
+        for (int[] ini : list) {
+            for (int a : ini) {
+                lis.add(lis.size(), a);
+            }
+        }return lis;
     }
 }
