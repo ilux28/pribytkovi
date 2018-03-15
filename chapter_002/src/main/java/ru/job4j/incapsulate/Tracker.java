@@ -4,21 +4,20 @@ import java.util.*;
 
 public class Tracker {
 
-    private Item[] items = new Item[10];
+    private List<Item> items = new ArrayList<Item>();
     private int position = 0;
     private static final Random RN = new Random();
 
     public Item add(Item item) {
         item.setId(generateId());
-        this.items[position++] = item;
+        items.add(items.size(), item) ;
         return item;
     }
     public void edit(Item fresh){
-        for (int index = 0; index != items.length; ++index) {
-            Item item = items[index];
+        for (Item item : items) {
             if (item != null && item.getId().equals(fresh.getId())) {
                 System.out.println("log 1");
-                items[index] = fresh;
+                item = fresh;
                 break;
             }
         }
@@ -35,42 +34,39 @@ public class Tracker {
     String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
-    public Item[] getAll() {
-        Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
+
+    public ArrayList<Item> getAll() {
+        ArrayList<Item> result = new ArrayList<Item>();
+        for (Item item : items) {
+            result.add(item);
         }return result;
     }
     public void replace(String id, Item item) {
-        for (int i = 0; i < this.position; i++) {
-            if (this.items[i] != null && this.items[i].getId().equals(id)) {
+        for (Item it : items) {
+            if (it != null && it.getId().equals(id)) {
                 item.setId(id);
-                items[i] = item;
                 break;
             }
         }
     }
     public void delete(String id) {
-        for (int i = 0; i < this.position; i++) {
-            if (this.items[i] != null && this.items[i].getId().equals(id)) {
-                System.arraycopy( this.items, i + 1, this.items, i, this.position - i);
-                this.position--;
+        for (Item item : items) {
+            if (item != null && item.getId().equals(id)) {
+                items.remove(item);
                 break;
             }
         }
     }
-    public Item[] findAll() {
-        return this.items;
+    public List<Item> findAll() {
+        return items;
     }
-    public Item[] findByName(String key) {
-        Item[] res = new Item[this.position];
-        int j = 0;
-        for (int i = 0; i < this.position; i++) {
-            if (this.items[i].getName().equals(key)) {
-            System.arraycopy(this.items, i, res, j, 1);
-            j++;
+    public ArrayList<Item> findByName(String key) {
+        ArrayList<Item> it = new ArrayList<Item>();
+        for (Item item : items) {
+            if (item.getName().equals(key)) {
+            it.add(item);
             }
-        } return res;
+        } return it;
     }
 }
 

@@ -110,7 +110,7 @@ public class MenuTracker {
         }
         public void execute(Input input, Tracker tracker) {
             String name = input.ask("Plese, enter the task's name: ");
-            System.out.println(tracker.findByName(name)[0].getId());
+            System.out.println(tracker.findByName(name).get(0).getId());
         }
         public String info() {
             return String.format("%s. %s", this.key(), "Search item with switched name.");
