@@ -1,9 +1,7 @@
 package ru.job4j.sortColection;
 
 import java.util.*;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+
 
 public class SortUser {
     public Set<User> sort(List<User> users) {
