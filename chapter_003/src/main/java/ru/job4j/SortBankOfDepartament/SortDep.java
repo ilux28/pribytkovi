@@ -18,7 +18,7 @@ public class SortDep {
         Arrays.sort(dep, new Comparator<String>() {
             @Override
             public int compare(String a, String b) {
-                return a.compareTo(b) == -1 ? 1 : -1;
+                return b.compareTo(a);
             }
         });
         return dep;
