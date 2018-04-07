@@ -1,6 +1,5 @@
-package ru.job4j.iterator;
+package ru.job4j.colection.iterator;
 
-import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 

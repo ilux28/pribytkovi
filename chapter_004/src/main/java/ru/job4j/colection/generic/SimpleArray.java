@@ -1,4 +1,4 @@
-package ru.job4j.generic;
+package ru.job4j.colection.generic;
 
 public class SimpleArray <T>{
     private Object[] objects;

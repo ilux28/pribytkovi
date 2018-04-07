@@ -1,4 +1,4 @@
-package ru.job4j.generic;
+package ru.job4j.colection.generic;
 
 public abstract class Store<T extends Base> {
     public abstract void add(T model);

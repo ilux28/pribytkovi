@@ -1,6 +1,4 @@
-package ru.job4j.iterator;
-
-import java.util.Iterator;
+package ru.job4j.colection.iterator;
 
 public class ConvertIterator {
  /*   int convert(Iterator<Iterator<Integer>> it) {
