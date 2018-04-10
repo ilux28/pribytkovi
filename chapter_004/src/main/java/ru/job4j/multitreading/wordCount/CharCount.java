@@ -1,4 +1,4 @@
-package ru.job4j.multitreading;
+package ru.job4j.multitreading.wordCount;
 
 public class CharCount extends Thread {
     String line = new String();
@@ -15,5 +15,6 @@ public class CharCount extends Thread {
             }
         }
         System.out.println(j);
+        Thread.currentThread().interrupt();
     }
 }
