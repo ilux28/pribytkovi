@@ -26,8 +26,6 @@ public class Time {
                 y.join();
                 z.join();
             } catch (InterruptedException e) { }
-            if (z.isAlive())
-                z.interrupt();
         }
         System.out.print("Finish!");
     }

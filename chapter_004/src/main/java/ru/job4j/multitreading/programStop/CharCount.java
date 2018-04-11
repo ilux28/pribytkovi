@@ -14,6 +14,5 @@ public class CharCount implements Runnable {
             }
         }
         System.out.println(j);
-        Thread.currentThread().interrupt();
     }
 }
