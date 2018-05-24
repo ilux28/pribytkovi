@@ -1,5 +1,7 @@
 package ru.job4j.multitreading.nonBlock;
 
+import jdk.nashorn.internal.ir.Optimistic;
+
 import java.util.concurrent.ConcurrentHashMap;
 
 public class NonBlockStore {
@@ -9,8 +11,14 @@ public class NonBlockStore {
         this.concurrentHashMap = concurrentHashMap;
     }
     public void add(Task task) {
+        task.setVersion();
+        for (ConcurrentHashMap.Entry<Integer, Task> item : concurrentHashMap.entrySet()) {
+            if (task.getId() == item.getValue().getId()) {
+                if (task.getVersion() != item.getValue().getVersion())
+                    concurrentHashMap.put(task.getId(), task);
+            }
 
-        if (task.getVersion() == 0)
+        }
         concurrentHashMap.put(task.getId(), task);
         task.setVersion();
     }
