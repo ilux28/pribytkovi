@@ -1,4 +1,4 @@
-package pribytkovi.CRUDservlet;
+package pribytkovi.servlets;
 
 import com.sun.jmx.snmp.Timestamp;
 
@@ -8,6 +8,11 @@ public class User {
     private String email;
     private Timestamp createDate;
 
+    User (String name) {
+        setId(id);
+        id++;
+        setName(name);
+    }
     public int getId() {
         return this.id;
     }
