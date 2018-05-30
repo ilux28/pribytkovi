@@ -8,10 +8,16 @@ public class User {
     private String email;
     private Timestamp createDate;
 
-    User (String name) {
-        setId(id);
-        id++;
-        setName(name);
+    private static User user = new User();
+    public static User getUser() {
+        return user;
+    }
+    User() {
+    }
+    User (int id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
     }
     public int getId() {
         return this.id;
