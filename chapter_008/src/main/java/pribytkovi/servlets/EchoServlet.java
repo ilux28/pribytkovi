@@ -24,8 +24,22 @@ public class EchoServlet extends HttpServlet {
         res.setContentType("text/html");
         //String login = req.getParameter("login");
         PrintWriter writer = new PrintWriter(res.getOutputStream());
-        //for (String log : users) {
-            writer.append("hello world " + this.users);
+        StringBuilder sb = new StringBuilder("<table>");
+        for (User use : this.users)
+                sb.append("<tr><td>"+ use.getName() +"</tr></td>");
+            writer.append("<DOCTYPE html>" +
+                    "<head>" +
+                    "   <meta charset=\"UTF-8\">" +
+                    "   <title></title>" +
+                    "</head>" +
+                    "<body>" +
+                    "<form action=' "+req.getContextPath()+"/echo' method='post'>" +
+                    "Name : <input type=text' action='add'/>" +
+                    "<input type='submit'>" +
+                    "</form>" +
+                    sb.toString() +
+                    "</body>" +
+                    "</html>");
         //}
         writer.flush();
     }
