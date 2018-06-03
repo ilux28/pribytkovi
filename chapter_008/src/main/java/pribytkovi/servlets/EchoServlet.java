@@ -34,13 +34,15 @@ public class EchoServlet extends HttpServlet {
                     "</head>" +
                     "<body>" +
                     "<form action=' "+req.getContextPath()+"/echo' method='post'>" +
-                    "Name : <input type=text' action='add'/>" +
+                    "Action : <input type=text' name='action'/>" +
+                    "ID : <input type=text' name='id'/>" +
+                    "Name : <input type=text' name='name'/>" +
+                    "Email : <input type=text' name='email'/>" +
                     "<input type='submit'>" +
                     "</form>" +
                     sb.toString() +
                     "</body>" +
                     "</html>");
-        //}
         writer.flush();
     }
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
