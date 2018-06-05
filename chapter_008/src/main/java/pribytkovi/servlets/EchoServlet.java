@@ -19,7 +19,7 @@ public class EchoServlet extends HttpServlet {
 
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException {
-        req.getRequestDispatcher("/index.jsp");
+        //req.getRequestDispatcher("/index.jsp");
         System.out.println("Enter doGet");
 
         res.setContentType("text/html");
@@ -62,6 +62,8 @@ public class EchoServlet extends HttpServlet {
         }
         //if ()
         //this.users.add(new User());
-        doGet(req, res);
+        res.sendRedirect(String.format("%s/index.jsp", req.getContextPath()));
+        //doGet(req, res);
+
     }
 }
