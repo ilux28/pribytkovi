@@ -1,16 +1,29 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ilux28
-  Date: 03.06.2018
-  Time: 16:52
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="pribytkovi.servlets.User" %>
+<%@ page import="pribytkovi.servlets.UserStorage" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="ISO-8859-5" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Главная страница JSP</title>
 </head>
-<body>
-
+<form action="<%=request.getContextPath()%>/" method="post">
+    Action : <input type=text' name='action'/>
+    ID : <input type=text' name='id'/>
+    Name : <input type=text' name='name'/>
+    Email : <input type=text' name='email'/>
+    <input type='submit'>
+</form>
+<table>
+    <th>Номер</th>
+    <th>Имя</th>
+    <th>Почта</th>
+<% for (User user : UserStorage.getInstance().getUsers()) {%>
+<tr>
+    <td><%=user.getId()%></td>
+    <td><%=user.getName()%></td>
+    <td><%=user.getEmail()%></td>
+</tr>
+<% } %>
+</table>
+<h1>Ogogo</h1>
 </body>
 </html>

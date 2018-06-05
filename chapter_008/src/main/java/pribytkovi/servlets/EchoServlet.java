@@ -15,34 +15,19 @@ import java.util.List;
 
 public class EchoServlet extends HttpServlet {
     private static  final Logger Log = LoggerFactory.getLogger(EchoServlet.class);
-    private List<User> users = new CopyOnWriteArrayList<User>();
+
 
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException {
+        req.getRequestDispatcher("/index.jsp");
         System.out.println("Enter doGet");
 
         res.setContentType("text/html");
         //String login = req.getParameter("login");
         PrintWriter writer = new PrintWriter(res.getOutputStream());
         StringBuilder sb = new StringBuilder("<table>");
-        for (User use : this.users)
-                sb.append("<tr><td>"+ use.getName() +"</tr></td>");
-            writer.append("<DOCTYPE html>" +
-                    "<head>" +
-                    "   <meta charset=\"UTF-8\">" +
-                    "   <title></title>" +
-                    "</head>" +
-                    "<body>" +
-                    "<form action=' "+req.getContextPath()+"/echo' method='post'>" +
-                    "Action : <input type=text' name='action'/>" +
-                    "ID : <input type=text' name='id'/>" +
-                    "Name : <input type=text' name='name'/>" +
-                    "Email : <input type=text' name='email'/>" +
-                    "<input type='submit'>" +
-                    "</form>" +
-                    sb.toString() +
-                    "</body>" +
-                    "</html>");
+        sb.append("</table>");
+        sb.toString();
         writer.flush();
     }
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -53,11 +38,12 @@ public class EchoServlet extends HttpServlet {
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         Timestamp date = new Timestamp();
+        List<User> users = UserStorage.getInstance().getUsers();
         //req.setAttribute("UserList", this.users);
         switch (action == null ? "info" : action) {
             case "add":
                 User user = new User(yd, name, email);
-                this.users.add(user);
+                UserStorage.getInstance().add(user);
                 break;
             case "update" :
                 for (int i = 0; i < users.size(); i++)
