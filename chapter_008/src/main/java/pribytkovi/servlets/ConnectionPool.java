@@ -18,11 +18,11 @@ public class ConnectionPool {
         }
         this.url = url;
         for (int i = 0; i < initConnCnt; i++) {
-            availableCon.addElement(getConnetion());
+            availableCon.addElement(getConnection());
         }
     }
 
-    public Connection getConnetion() {
+    public Connection getConnection() {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -30,6 +30,17 @@ public class ConnectionPool {
             e.printStackTrace();
         }
         return conn;
+    }
+    public synchronized Connection retrieve(Connection c) throws SQLException {
+        Connection newConn = null;
+        if (availableCon.size() == 0) {
+            newConn  = getConnection();
+        } else {
+            newConn = (Connection) availableCon.lastElement();
+            availableCon.removeElement(newConn);
+        }
+        usedConns.addElement(newConn);
+        return newConn;
     }
     public synchronized void putback(Connection c) throws NullPointerException {
         if (c != null) {
