@@ -3,6 +3,7 @@ package pribytkovi.servlets;
 import java.sql.*;
 import java.util.List;
 import java.sql.DriverManager;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -23,18 +24,15 @@ public class DBStore implements Store {
             ds.setUrl("jdbc:postgresql://localhost:5432/contactdb");
             ds.setUsername("postgres");
             ds.setPassword("123");
-
             ds.setMinIdle(5);
             ds.setMaxIdle(10);
             ds.setMaxOpenPreparedStatements(100);
-
             dataSource = ds;
         }
         return dataSource;
     }
     @Override
     public void add(String name, String password) {
-
         String sql = "INSERT INTO USERS (LOGIN, PASSWORD) VALUES (?, ?)";
         try (BasicDataSource dataSource = DBStore.getDataSource();
         Connection connection = dataSource.getConnection();
@@ -52,7 +50,23 @@ public class DBStore implements Store {
     }
     @Override
     public void update(int id, String name, String password) {
-
+        String sql = "INSERT INTO USERES (LOGIN, PASSWORD) VALUES (?, ?)";
+        try (BasicDataSource dataSource = DBStore.getDataSource();
+        Connection connection = dataSource.getConnection();
+        Statement stmt = connection.createStatement();
+        PreparedStatement prst = connection.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery("SELECT * FROM USERS"))
+        {
+            System.out.println("The connection Objects is of Class: " + connection.getClass());
+            while (rs.next()) {
+                if (rs.getInt(1) == id) {
+                    prst.setString(1, name);
+                    prst.setString(2, password);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
