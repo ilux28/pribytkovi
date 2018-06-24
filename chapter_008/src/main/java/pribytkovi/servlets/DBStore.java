@@ -1,13 +1,12 @@
 package pribytkovi.servlets;
 
-import java.sql.*;
-import java.util.List;
-import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +49,7 @@ public class DBStore implements Store {
     }
     @Override
     public void update(int id, String name, String password) {
-        String sql = "INSERT INTO USERES (LOGIN, PASSWORD) VALUES (?, ?)";
+        String sql = "INSERT INTO USERS (LOGIN, PASSWORD) VALUES (?, ?)";
         try (BasicDataSource dataSource = DBStore.getDataSource();
         Connection connection = dataSource.getConnection();
         Statement stmt = connection.createStatement();
@@ -68,20 +67,56 @@ public class DBStore implements Store {
             e.printStackTrace();
         }
     }
-
     @Override
-    public User delete() {
-        return null;
+    public ResultSet delete(String name) {
+        ResultSet rs = null;
+        try (BasicDataSource dataSource = DBStore.getDataSource();
+             Connection connection = dataSource.getConnection();
+             Statement stmt = connection.createStatement()) {
+            rs = stmt.executeQuery("DELETE FROM USERS WHERE login == name");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rs;
     }
-
     @Override
     public User[] findAll() {
-        return new User[0];
+        ArrayList<User> listUsers = new ArrayList<>();
+        try (BasicDataSource dataSource = DBStore.getDataSource();
+        Connection connection = dataSource.getConnection();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM USERS")) {
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt(1));
+                user.setName(rs.getString(2));
+                user.setEmail(rs.getString(3));
+                listUsers.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        User[] users = listUsers.toArray(new User[listUsers.size()]);
+        return users;
     }
-
     @Override
-    public User findBiId() {
-        return null;
+    public User findBiId(int id) {
+        User user = new User();
+        try (BasicDataSource dataSource = DBStore.getDataSource();
+        Connection connection = dataSource.getConnection();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM USERS")) {
+            while (rs.next()) {
+                if (rs.getInt(1) == id) {
+                     user.setId(id);
+                     user.setName(rs.getString(2));
+                     user.setEmail(rs.getString(3));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
     /*public Object ActionDatabase(String SAction) throws Exception {
         try {
