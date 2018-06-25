@@ -17,7 +17,7 @@ public class DBStore implements Store {
     String driver;
     int initConnCnt;
     private static BasicDataSource  dataSource;
-    private static BasicDataSource getDataSource() {
+    private static synchronized BasicDataSource getDataSource() {
         if (dataSource == null) {
             BasicDataSource ds = new BasicDataSource();
             ds.setUrl("jdbc:postgresql://localhost:5432/contactdb");
@@ -32,6 +32,7 @@ public class DBStore implements Store {
     }
     @Override
     public void add(String name, String password) {
+
         String sql = "INSERT INTO USERS (LOGIN, PASSWORD) VALUES (?, ?)";
         try (BasicDataSource dataSource = DBStore.getDataSource();
         Connection connection = dataSource.getConnection();
@@ -43,6 +44,7 @@ public class DBStore implements Store {
             pstmt.setString(2, password);
             pstmt.executeUpdate();
             pstmt.close();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -61,6 +63,9 @@ public class DBStore implements Store {
                 if (rs.getInt(1) == id) {
                     prst.setString(1, name);
                     prst.setString(2, password);
+                    prst.executeUpdate();
+                    prst.close();
+                    connection.close();
                 }
             }
         } catch (SQLException e) {
@@ -74,6 +79,8 @@ public class DBStore implements Store {
              Connection connection = dataSource.getConnection();
              Statement stmt = connection.createStatement()) {
             rs = stmt.executeQuery("DELETE FROM USERS WHERE login == name");
+            if (rs != null)
+                rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -92,6 +99,7 @@ public class DBStore implements Store {
                 user.setName(rs.getString(2));
                 user.setEmail(rs.getString(3));
                 listUsers.add(user);
+
             }
         } catch (SQLException e) {
             e.printStackTrace();

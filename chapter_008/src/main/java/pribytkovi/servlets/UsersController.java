@@ -13,22 +13,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class EchoServlet extends HttpServlet {
-    private static  final Logger Log = LoggerFactory.getLogger(EchoServlet.class);
-
-
-
+public class UsersController extends HttpServlet {
+    private static  final Logger Log = LoggerFactory.getLogger(UsersController.class);
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException {
-        //req.getRequestDispatcher("/index.jsp");
-        System.out.println("Enter doGet");
-
-        res.setContentType("text/html");
-        //String login = req.getParameter("login");
-        PrintWriter writer = new PrintWriter(res.getOutputStream());
-        StringBuilder sb = new StringBuilder("<table>");
-        sb.append("</table>");
-        sb.toString();
-        writer.flush();
+       req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
     }
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setContentType("text/html");
@@ -64,6 +52,5 @@ public class EchoServlet extends HttpServlet {
         //this.users.add(new User());
         res.sendRedirect(String.format("%s/index.jsp", req.getContextPath()));
         //doGet(req, res);
-
     }
 }
