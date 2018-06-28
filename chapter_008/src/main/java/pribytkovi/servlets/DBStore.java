@@ -17,6 +17,7 @@ public class DBStore implements Store {
     String driver;
     int initConnCnt;
     private static BasicDataSource  dataSource;
+
     private static synchronized BasicDataSource getDataSource() {
         if (dataSource == null) {
             BasicDataSource ds = new BasicDataSource();

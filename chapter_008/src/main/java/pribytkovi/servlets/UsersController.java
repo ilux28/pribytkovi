@@ -16,7 +16,8 @@ import java.util.List;
 public class UsersController extends HttpServlet {
     private static  final Logger Log = LoggerFactory.getLogger(UsersController.class);
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException {
-       req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
+        req.setAttribute("users", UserStorage.getInstance().getUsers());
+        req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
     }
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setContentType("text/html");
@@ -50,7 +51,7 @@ public class UsersController extends HttpServlet {
         }
         //if ()
         //this.users.add(new User());
-        res.sendRedirect(String.format("%s/index.jsp", req.getContextPath()));
+        res.sendRedirect(String.format("%s/", req.getContextPath()));
         //doGet(req, res);
     }
 }
