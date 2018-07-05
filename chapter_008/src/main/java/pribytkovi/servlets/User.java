@@ -6,7 +6,10 @@ public class User {
     private int id;
     private String name;
     private String email;
+    private String password;
     private Timestamp createDate;
+
+
 
     private static User user = new User();
     public static User getUser() {
@@ -18,6 +21,12 @@ public class User {
         this.id = id;
         this.name = name;
         this.email = email;
+    }
+    public User(int id, String name, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
     public int getId() {
         return this.id;
@@ -42,5 +51,13 @@ public class User {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

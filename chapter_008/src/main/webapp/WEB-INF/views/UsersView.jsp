@@ -13,7 +13,7 @@
     Email : <input type=text' name='email'/>
     <input type='submit'>
 </form>
-<table style="border: 1px solid black;" cellpadding="1" cellspacing="1" border="1">
+<table style="border: 1px solid rgba(123,123,123,0.6);" cellpadding="1" cellspacing="1" border="1">
     <th>Номер</th>
     <th>Имя</th>
     <th>Почта</th>

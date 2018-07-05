@@ -35,8 +35,8 @@ public class DBStore implements Store {
     public void add(String name, String password) {
 
         String sql = "INSERT INTO USERS (LOGIN, PASSWORD) VALUES (?, ?)";
-        try (BasicDataSource dataSource = DBStore.getDataSource();
-        Connection connection = dataSource.getConnection();
+        try (BasicDataSource ds = DBStore.getDataSource();
+        Connection connection = ds.getConnection();
         PreparedStatement pstmt = connection.prepareStatement(sql);
         )
         {
