@@ -13,7 +13,10 @@
 </head>
 <body>
 <c: if test="${error != ''}">
-    <div style=""></div>
+    <div style="background-color: red">
+        <c:out value="${error}">
+    </div>
+    </c:out>>
 <form action="${pageContext.servletContext.contextPath}/signin" method="post">
     Name :  <input type=text' name='name'/></br>
     Password : <input type=text' name='password'/>
