@@ -16,16 +16,17 @@ import java.util.List;
 
 public class UsersController extends HttpServlet {
     private static  final Logger Log = LoggerFactory.getLogger(UsersController.class);
+    private List<User> users = new CopyOnWriteArrayList<>();
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException {
-        HttpSession session = req.getSession(false);
+        HttpSession session = req.getSession(true);
         synchronized (session) {
             if (session == null || session.getAttribute("name") == null) {
-                res.sendRedirect(String.format("%s/signin", req.getContextPath()));
-            } else {
-                req.setAttribute("users", UserStorage.getInstance().getUsers());
-                req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
-            }
-        }
+        res.sendRedirect(String.format("%s/signin", req.getContextPath()));
+        } else {
+        req.setAttribute("users", UserStorage.getInstance().getUsers());
+        req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
+    }
+}
     }
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setContentType("text/html");
@@ -35,7 +36,7 @@ public class UsersController extends HttpServlet {
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         Timestamp date = new Timestamp();
-        List<User> users = UserStorage.getInstance().getUsers();
+
         //req.setAttribute("UserList", this.users);
         switch (action == null ? "info" : action) {
             case "add":
@@ -44,10 +45,10 @@ public class UsersController extends HttpServlet {
                 break;
             case "update" :
                 for (int i = 0; i < users.size(); i++)
-                if (users.get(i).getId() == yd) {
-                    User use = users.get(i);
-                    use.setName(name);
-                    use.setEmail(email);
+                    if (users.get(i).getId() == yd) {
+                        User use = users.get(i);
+                        use.setName(name);
+                        use.setEmail(email);
                 }
                 break;
             case "delete" :
