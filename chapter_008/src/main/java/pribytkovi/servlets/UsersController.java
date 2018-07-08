@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import java.util.concurrent.CopyOnWriteArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,8 +17,15 @@ import java.util.List;
 public class UsersController extends HttpServlet {
     private static  final Logger Log = LoggerFactory.getLogger(UsersController.class);
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException {
-        req.setAttribute("users", UserStorage.getInstance().getUsers());
-        req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
+        HttpSession session = req.getSession(false);
+        synchronized (session) {
+            if (session == null || session.getAttribute("name") == null) {
+                res.sendRedirect(String.format("%s/signin", req.getContextPath()));
+            } else {
+                req.setAttribute("users", UserStorage.getInstance().getUsers());
+                req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
+            }
+        }
     }
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setContentType("text/html");

@@ -9,15 +9,7 @@ import java.io.IOException;
 
 public class SigninController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       HttpSession session = request.getSession(false);
-       synchronized (session) {
-           if (session == null || session.getAttribute("name") == null) {
-               response.sendRedirect(String.format("%s/signin", request.getContextPath()));
-           }
-       }
-        request.setAttribute("users", UserStorage.getInstance().getUsers());
-        request.getRequestDispatcher("/WEB-INF/view/LoginView.jsp").forward(request, response);
-
+       request.getRequestDispatcher("/WEB-INF/view/LoginView.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
