@@ -9,18 +9,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Login View</title>
 </head>
-<body>
-<c: if test="${error != ''}">
-    <div style="background-color: red">
-        <c:out value="${error}">
-    </div>
-    </c:out>>
-<form action="${pageContext.servletContext.contextPath}/signin" method="post">
-    Name :  <input type=text' name='name'/></br>
-    Password : <input type=text' name='password'/>
-    <input type='submit'>
-</form>
-</body>
+    <body>
+    <c:if test="${error != ''}">
+        <div style="background-color: red">
+            <c:out value="${error}">
+        </c:out>
+        <form action="${pageContext.servletContext.contextPath}/" method="post">
+               <input type='submit' name="Зарегаться">
+                </form>
+    </c:if>
+        <form action="${pageContext.servletContext.contextPath}/signin" method="post">
+            Name :  <input type=text' name='name'/></br>
+            Password : <input type=text' name='password'/>
+            <input type='submit'>
+        </form>
+    </body>
 </html>

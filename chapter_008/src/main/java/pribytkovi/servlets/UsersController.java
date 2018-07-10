@@ -17,19 +17,19 @@ import java.util.List;
 public class UsersController extends HttpServlet {
     private static  final Logger Log = LoggerFactory.getLogger(UsersController.class);
     private List<User> users = new CopyOnWriteArrayList<>();
+
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException {
-        HttpSession session = req.getSession(true);
-        synchronized (session) {
-            if (session == null || session.getAttribute("name") == null) {
-        res.sendRedirect(String.format("%s/signin", req.getContextPath()));
-        } else {
         req.setAttribute("users", UserStorage.getInstance().getUsers());
         req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
+        System.out.println("egns");
     }
-}
-    }
+
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        res.setContentType("text/html");
+       res.setContentType("text/html");
+       UserStorage.getInstance().add(new User(1, req.getParameter("name"), req.getParameter("email"), req.getParameter("password")));
+        res.sendRedirect(String.format("%s/", req.getContextPath()));
+        System.out.println("egns1");
+        /* res.setContentType("text/html");
         String action = req.getParameter("action");
         String id = req.getParameter("id");
         int yd = Integer.parseInt(id);
@@ -62,5 +62,6 @@ public class UsersController extends HttpServlet {
         //this.users.add(new User());
         res.sendRedirect(String.format("%s/", req.getContextPath()));
         //doGet(req, res);
+        */
     }
 }

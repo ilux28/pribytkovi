@@ -4,6 +4,14 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
          http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>pribytkovi.servlets.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>Users View Servlet</servlet-name>
         <servlet-class>pribytkovi.servlets.UsersController</servlet-class>
