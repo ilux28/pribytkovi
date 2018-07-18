@@ -9,7 +9,8 @@ import java.io.IOException;
 
 public class SigninController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       request.getRequestDispatcher("/WEB-INF/views/LoginView.jsp").forward(request, response);
+       request.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(request, response);
+       System.out.println("Signin_1");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -17,14 +18,16 @@ public class SigninController extends HttpServlet {
         String password = request.getParameter("password");
         if (UserStorage.getInstance().isCredentional(name, password)) {
             HttpSession session = request.getSession();
+            System.out.println("Signin_2");
             synchronized (session) {
                 session.setAttribute("name", name);
             }
-            response.sendRedirect(String.format("%s/", request.getContextPath()));
-
+            response.sendRedirect(String.format("%s/UsersView.jsp", request.getContextPath()));
         } else {
             request.setAttribute("error", "Credentional invalid");
-            doGet(request, response);
+            System.out.println("Signin_3");
+            //doGet(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(request, response);
         }
     }
 }

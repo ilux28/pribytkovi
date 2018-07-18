@@ -14,7 +14,6 @@ public class UserStorage {
     private List<User> users = new CopyOnWriteArrayList<User>();
 
     private UserStorage() {
-        this.users.add(new User(1, "name", "email"));
     }
 
     public static UserStorage getInstance() {

@@ -12,13 +12,16 @@
     <title>Login View</title>
 </head>
     <body>
+    <c:if test="${name != ''}">
+
+        <c:out value="${name}">
+            <h1>Привет vaLUE</h1>
+        </c:out>
+        </c:if>
     <c:if test="${error != ''}">
-        <div style="background-color: red">
+        <div style="background-color: #c9ff79">
             <c:out value="${error}">
         </c:out>
-        <form action="${pageContext.servletContext.contextPath}/" method="post">
-               <input type='submit' name="Зарегаться">
-                </form>
     </c:if>
         <form action="${pageContext.servletContext.contextPath}/signin" method="post">
             Name :  <input type=text' name='name'/></br>

@@ -17,51 +17,59 @@ import java.util.List;
 public class UsersController extends HttpServlet {
     private static  final Logger Log = LoggerFactory.getLogger(UsersController.class);
     private List<User> users = new CopyOnWriteArrayList<>();
-
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException {
-        req.setAttribute("users", UserStorage.getInstance().getUsers());
-        req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
-        System.out.println("egns");
+       System.out.println("Method doPost UserController");
+       HttpSession session = req.getSession(false);
+       if (session == null || session.getAttribute("name") == null) {
+           System.out.println("Method doPost UserController_1");
+           req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
+          //req.getRequestDispatcher("/signin").forward(req, res);
+           //res.sendRedirect(String.format("%s/signin", req.getContextPath()));
+       } else {
+           System.out.println("Method doPost UserController_2");
+           req.setAttribute("users", UserStorage.getInstance().getUsers());
+           req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
+       }
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
        res.setContentType("text/html");
-       UserStorage.getInstance().add(new User(1, req.getParameter("name"), req.getParameter("email"), req.getParameter("password")));
-        res.sendRedirect(String.format("%s/", req.getContextPath()));
-        System.out.println("egns1");
-        /* res.setContentType("text/html");
-        String action = req.getParameter("action");
-        String id = req.getParameter("id");
-        int yd = Integer.parseInt(id);
-        String name = req.getParameter("name");
-        String email = req.getParameter("email");
-        Timestamp date = new Timestamp();
+       //UserStorage.getInstance().add(new User(1, req.getParameter("name"), req.getParameter("email"), req.getParameter("password")));
+       //res.sendRedirect(String.format("%s/", req.getContextPath()));
+       System.out.println("Method doPost UserController");
+       //doGet(req, res);
+       String action = req.getParameter("action");
+       String id = req.getParameter("id");
+       int yd = Integer.parseInt(id);
+       String name = req.getParameter("name");
+       String email = req.getParameter("email");
+       String password = req.getParameter("password");
+       Timestamp date = new Timestamp();
 
         //req.setAttribute("UserList", this.users);
         switch (action == null ? "info" : action) {
             case "add":
-                User user = new User(yd, name, email);
+                System.out.println("Method doPost UserController add");
+                User user = new User(yd, name, email, password);
                 UserStorage.getInstance().add(user);
                 break;
             case "update" :
-                for (int i = 0; i < users.size(); i++)
-                    if (users.get(i).getId() == yd) {
-                        User use = users.get(i);
-                        use.setName(name);
-                        use.setEmail(email);
+                System.out.println("Method doPost UserController update");
+                for (int i = 0; i < UserStorage.getInstance().getUsers().size(); i++)
+                    if (UserStorage.getInstance().getUsers().get(i).getId() == yd) {
+                        users.get(i).setName(name);
+                        users.get(i).setEmail(email);
                 }
                 break;
             case "delete" :
-                for (int i = 0; i < users.size(); i++)
-                    if (users.get(i).getId() == yd) {
-                        users.remove(users.get(i));
+                System.out.println("Method doPost UserController delete");
+                for (int i = 0; i < UserStorage.getInstance().getUsers().size(); i++)
+                    if (UserStorage.getInstance().getUsers().get(i).getId() == yd) {
+                        UserStorage.getInstance().getUsers().remove(UserStorage.getInstance().getUsers().get(i));
                     }
                 break;
         }
-        //if ()
-        //this.users.add(new User());
-        res.sendRedirect(String.format("%s/", req.getContextPath()));
-        //doGet(req, res);
-        */
+        //System.out.println("doGet UserController");
+        doGet(req, res);
     }
 }
