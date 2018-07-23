@@ -20,16 +20,10 @@ public class UsersController extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException {
        System.out.println("Method doPost UserController");
        HttpSession session = req.getSession(false);
-       if (session == null || session.getAttribute("name") == null) {
-           System.out.println("Method doPost UserController_1");
-           req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
-          //req.getRequestDispatcher("/signin").forward(req, res);
-           //res.sendRedirect(String.format("%s/signin", req.getContextPath()));
-       } else {
            System.out.println("Method doPost UserController_2");
            req.setAttribute("users", UserStorage.getInstance().getUsers());
            req.getRequestDispatcher("/WEB-INF/views/UsersView.jsp").forward(req, res);
-       }
+
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
