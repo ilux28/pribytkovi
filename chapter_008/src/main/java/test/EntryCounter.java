@@ -1,16 +1,15 @@
-package pribytkovi.servlets;
+package test;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 /**
  *
  * @author user600_7
  */
-
 public class EntryCounter implements Comparable<EntryCounter> {
 //public int[][] mass = new int[2][arra.length];
-    List <EntryCounter> list = new ArrayList<>();
+
+
     public Integer number;
     public Integer repitCounter;
     /**
@@ -19,10 +18,11 @@ public class EntryCounter implements Comparable<EntryCounter> {
      * @param arra
      * @return
      */
-
     public EntryCounter() {
     }
+
     public List<EntryCounter> counter(int[] arra) {
+
         System.out.println(arra.length);
         for (int i = 0; i < arra.length; i++) {
             Integer k = 0;
@@ -30,14 +30,18 @@ public class EntryCounter implements Comparable<EntryCounter> {
                 if (arra[i] == arra[j])
                     k++;
             }
-            System.out.println(arra[i] + " " + k);
-            this.number = arra[i];
-            this.repitCounter = k;
             EntryCounter entr = new EntryCounter();
-            this.list.add(entr);
+            //System.out.println(arra[i] + " " + k);
+            entr.number = arra[i];
+            entr.repitCounter = k;
+            StoresEntryCounter.getList().add(entr);
         }
-        Collections.sort(list);
-        return list;
+        //System.out.println(list.size());
+        Collections.sort(StoresEntryCounter.getList());
+        for (EntryCounter ent : StoresEntryCounter.getList()) {
+            System.out.println(ent.number + " " + ent.repitCounter);
+        }
+        return StoresEntryCounter.getList();
     }
     @Override
     public int compareTo(EntryCounter t) {
@@ -52,5 +56,4 @@ public class EntryCounter implements Comparable<EntryCounter> {
         EntryCounter entr = new EntryCounter();
         entr.counter(array);
     }
-
 }
