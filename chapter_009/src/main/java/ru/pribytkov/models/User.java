@@ -15,7 +15,7 @@ public class User {
     public static User getUser() {
         return user;
     }
-    User() {
+    public User() {
     }
     User(int id, String name, String email) {
         this.id = id;
