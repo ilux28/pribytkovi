@@ -1,0 +1,10 @@
+<hibernate-mapping>
+    <class name="ru.pribytkov.models.User" table="users">
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <property name="name" column="name"/>
+        <property name="password" column="password"/>
+        <property name="createDate" column="create_date"/>
+    </class>
+</hibernate-mapping>
