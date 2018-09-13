@@ -4,21 +4,17 @@
         <servlet-name>add</servlet-name>
         <servlet-class>ru.pribytkov.servlets.AddServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>add</servlet-name>
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
-
     <!-- list servlet -->
-    <sevlet>
+    <servlet>
         <servlet-name>list</servlet-name>
         <servlet-class>ru.pribytkov.servlets.ListServlet</servlet-class>
-    </sevlet>
-
+    </servlet>>
     <servlet-mapping>
-        <url-pattern>list</url-pattern>
+        <servlet-name>list</servlet-name>
         <url-pattern>/list</url-pattern>
     </servlet-mapping>
-
 </web-app>

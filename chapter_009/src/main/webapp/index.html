@@ -2,20 +2,73 @@
 <html lang="en">
 <head>
     <meta charsert="UTF-8">
-    <title>My super project</title>
+    <title>My simple TODO project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" scr="script.js"></script>
+    <style>
+        .form-group {
+            margin-left: 20%;  /* отступ слева*/
+            position: absolute;
+            left: 100px;
+            top: 60px;
+            width: 500px;
+            background: #fc0;
+            padding: 20px;/* Поля вокруг текста*/
+        }
+        .checkbox {
+            width: 100px;
+            margin-top: 100px;
+            margin-left: 420px;
+            background-color: aqua; /* цвет фона*/
+        }
+        .btn-primary {
+            margin-left: 420px;
+        }
+        .layer {
+            margin-left: 220px;
+        }
+        .table {
+            margin-left: 15%;
+            margin-top: 200px;
+            border-collapse: collapse; /*убираем пустые промежутки между ячейками*/
+            border: 1px solid  grey; /*устанавливаем для таблицы внешнюю границу серого цвета толщиной 1px*/
+        }
+        th {
+            border: 1px solid grey;
+            width: 20%;
+        }
+    </style>
 </head>
 <body>
     <!--header -->
-    <div>
-        <h1>Super app!</h1>
+    <div class="layer">
+        <h1>This is simple service of items</h1>
     </div>
     <div> <!-- content -->
-        <div> <!-- button holder -->
-            <button onclick="location.href='/list'">List users</button>
-            <button onclick="location.href='/add'">Add users</button>
+        <div>
+            <!-- button holder -->
+                <form class="add-forms">
+                    <div class="form-group">
+                        <label for="inputDescription">Description: </label>
+                        <input type="inputDescription" class="form-control" id="inputDescription" placeholder="Description">
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="created">Created: </label>
+                        <label><input type="checkbox" id="done">Done: </label>
+                    </div>
+                </form>
+            <button type="submit" class="btn btn-primary">Add item</button>
         </div>
-
+        <table class="table">
+            <th>ID</th>
+            <th>Description</th>
+            <th>Created</th>
+            <th>Done</th>
+        </table>
+        </div>
     </div>
-
 </body>
 </html>

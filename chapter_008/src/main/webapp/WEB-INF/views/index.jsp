@@ -12,8 +12,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
-        div {
-            width: 20%;
+        #description {
+            position: absolute;
+            left: 100px;
+            top: 50px;
+            width: 25px;
             background: #fc0;
             padding: 20px;
         }
