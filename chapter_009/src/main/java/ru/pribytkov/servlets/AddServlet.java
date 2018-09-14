@@ -14,13 +14,13 @@ import org.json.JSONObject;
 public class AddServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/json");
-        PrintWriter writer = new PrintWriter(response.getOutputStream());
-        writer.append("[{'description':'description about first item','created':'true', 'done':'true'}]");
-        writer.flush();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.setContentType("text/json");
+        response.setCharacterEncoding("utf-8");
+        PrintWriter writer = new PrintWriter(response.getOutputStream());
+        writer.append("[{'description':'description about first item','created':'true', 'done':'true'}]");
+        writer.flush();
     }
 }
