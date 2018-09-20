@@ -1,0 +1,40 @@
+.form-group {
+    margin-left: 20%;  /* отступ слева*/
+    position: absolute;
+    left: 100px;
+    top: 60px;
+    width: 500px;
+    background: #fc0;
+    padding: 20px;/* Поля вокруг текста*/
+}
+.checkbox {
+    width: 100px;
+    margin-top: 100px;
+    margin-left: 420px;
+    background-color: aqua; /* цвет фона*/
+}
+.btn-primary {
+    margin-left: 420px;
+}
+.layer {
+    margin-left: 220px;
+}
+table {
+    width: 75%;
+    margin-left: 200px;
+    margin-top: 100px;
+    border-collapse: collapse; /*убираем пустые промежутки между ячейками*/
+    border: 1px solid  grey; /*устанавливаем для таблицы внешнюю границу серого цвета толщиной 1px*/
+}
+tr {
+    border: 1px solid grey;
+    width: 20%;
+    background-color: red;
+}
+.warp {
+    margin-left: 420px;
+}
+#myButton {
+    background-color: transparent;
+}
+

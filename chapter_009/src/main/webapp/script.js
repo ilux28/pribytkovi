@@ -1,23 +1,51 @@
-$(document).ready(function(){
-    $("#button").click(function(){
-        var data = {};
-        data = {"description":$("#inputDescription").val(), "created":$("#created").val(), "done":$("#done")};
-        //
-        $.ajax
-        ({
-            type: "POST",//Метод передачи
-            data: data,//Передаваемые данные в JSON - формате
-            url: 'AddServlet',//Название сервлета
-            success:function(serverData)//Если запрос удачен
-            {
-                $("#auth-info").css({"background-color":serverData.backgroundColor, "height": "50px", "color":"white"});
-                $("#auth-info").html(serverData.serverInfo);
-            },
-            error: function(e)//Если запрос не удачен
-            {
-                $("#auth-info").css({"background-color":"#CC6666", "height": "50px", "color":"white"});
-                $("#auth-info").html("Запрос не удался!");
+/*$(
+    $.ajax('./add', {
+        method : 'get',
+        complite: function(data) {
+            var result =    "<tr>" +
+                "<td>ID</td>\n" +
+                "<td>Description</td>\n" +
+                "<td>Created</td>\n" +
+                "<td>Done</td>" +
+                "</tr>";
+            var items = JSON.parse(data.responseText);
+            for (var i=0;i!=items.length;++i) {
+                result += "<tr>" +
+                    "<td>" + items[i].id + "</td>"+
+                    "<td>" + items[i].description + "</td>"+
+                    "<td>" + items[i].creted + "</td>"+
+                    "<td>" + items[i].done + "</td>"+
+                    "</tr>";
             }
-        });
+            var table = document.getElementById("items");
+            table.innerHTML = result;
+        }
+    })
+);
+function createItem() {
+    $.ajax('./add', {
+        method : 'post',
+        data : {description : document.getElementById("inputDescription"),
+            created : document.getElementById("created"),
+            done : document.getElementById("done")}
+    })
+    return false;
+}
+function sendItem(url, callback) {
+    var oXmlHttp = createXMLHttp();
+    //подготовка и объявление запросов
+    oXmlHttp.open("GET", url, true);
+    oXmlHttp.setRequestHeader("Content-Type", "text/html; charset=utf-8");
+}
+*/
+$(document).ready(function() {
+    $.ajax('./add', {
+        method : 'get',
+        complete: function(data) {
+            console.log(JSON.parse(data.responseText));
+        }
     });
-});
+})
+
+
+
