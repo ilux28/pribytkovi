@@ -12,7 +12,12 @@ import org.json.JSONObject;
 
 @WebServlet(name = "AddServlet")
 public class AddServlet extends HttpServlet {
+    /*private JSONObject resultJson = new JSONObject();
 
+    public JSONObject getResultJson() {
+        return resultJson;
+    }
+    */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String description = request.getParameter("description");
         String created = request.getParameter("created");
@@ -25,8 +30,13 @@ public class AddServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json");
         response.setCharacterEncoding("utf-8");
+        JSONObject sendJson = new JSONObject();
+        sendJson.put("id", new Integer(1));
+        sendJson.put("description", "description about first item");
+        sendJson.put("created", new Boolean(true));
+        sendJson.put("done", new Boolean(true));
         PrintWriter writer = new PrintWriter(response.getOutputStream());
-        writer.append("[{'description':'description about first item','created':'true', 'done':'true'}]");
+        writer.append("sendJson");
         writer.flush();
     }
 }
