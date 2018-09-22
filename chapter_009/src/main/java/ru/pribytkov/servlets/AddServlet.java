@@ -1,5 +1,7 @@
 package ru.pribytkov.servlets;
 
+import ru.pribytkov.util.Converter;
+import ru.pribytkov.models.Item;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,15 +30,13 @@ public class AddServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/json");
+        response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
-        JSONObject sendJson = new JSONObject();
-        sendJson.put("id", new Integer(1));
-        sendJson.put("description", "description about first item");
-        sendJson.put("created", new Boolean(true));
-        sendJson.put("done", new Boolean(true));
+        Item item = new Item(1, "Description of first iitem", true, true);
+        Converter converter = new Converter();
+        String sendJson = converter.toJSON(item);
         PrintWriter writer = new PrintWriter(response.getOutputStream());
-        writer.append("sendJson");
+        writer.append(sendJson);
         writer.flush();
     }
 }
