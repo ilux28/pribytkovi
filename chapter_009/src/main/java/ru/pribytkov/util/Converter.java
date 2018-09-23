@@ -6,18 +6,18 @@ import java.io.File;
 import java.io.IOException;
 
 public class Converter {
-    private final static String baseFile = "item.json";
+    //private final static String baseFile = "item.json";
 
     public static String toJSON(Item item) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File(baseFile), item);
+        String sendJson = mapper.writeValueAsString(item);
         System.out.println("json created!");
         //String itemJson = baseFile;
-        return baseFile;
+        return sendJson;
     }
 
-    public static Item toJavaOject() throws IOException {
+    public static Item toJavaObject(String jsonString) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File(baseFile), Item.class);
+        return mapper.readValue(jsonString, Item.class);
     }
 }
