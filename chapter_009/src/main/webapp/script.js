@@ -2,7 +2,11 @@ $(document).ready(function() {
     $.ajax('./add', {
         method : 'get',
         complete: function(data) {
-            console.log(data);
+            data = JSON.parse(data);
+            for(var key in data) {
+                console.log("key: " + key + "value: " + data[key]);
+            }
+
         }
     });
 });
