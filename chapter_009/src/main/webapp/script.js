@@ -2,12 +2,11 @@ $(document).ready(function() {
     $.ajax('./add', {
         method: 'get',
         complete: function (data) {
-            /*
              data = JSON.parse(data);
-             for(var key in data) {
+             /* for(var key in data) {
                  console.log("key: " + key + "value: " + data[key]);
-                 */
-            var result = "<tr>" +
+             */
+            /* var result = "<tr>" +
                 "<td>ID</td>" +
                 "<td>Description</td>" +
                 "<td>Created</td>" +
@@ -19,13 +18,13 @@ $(document).ready(function() {
                     "<td>" + items[i].id + "</td>" +
                     "<td>" + items[i].desc + "</td>" +
                     "<td>" + items[i].created + "</td>" +
-                    /* "<td>" + items[i].done + "</td>" + */
+                    "<td>" + items[i].done + "</td>" +
                     "</tr>";
             }
             var table = document.getElementById("items");
             table.innerHTML(result);
+            */
         }
-
     })
 });
 
