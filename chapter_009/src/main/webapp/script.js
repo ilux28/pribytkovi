@@ -4,44 +4,38 @@ $(document).ready(function() {
         complete: function (data) {
             var respJson = data.responseJSON;
             console.log(respJson);
-            var resp = data.responseText;
-            console.log(resp);
-            var respJsonParse = JSON.parse(resp);
-            console.log(respJsonParse);
-            var JSONArray = data.array.data;
-            for (var i in JSONArray) {
-                console.log(JSONArray.toString());
-                console.log(JSONArray.valueOf());
-            }
-
-            /*
-            console.log(respJson.desc);
-            console.log(respJson.created);
-            console.log(respJson.done);
-
-
-             //data = JSON.parse(data);
-             /* for(var key in data) {
-                 console.log("key: " + key + "value: " + data[key]);
-             */
-            /* var result = "<tr>" +
+            //console.log(respJson.size);
+            var result = "<tr>" +
                 "<td>ID</td>" +
                 "<td>Description</td>" +
                 "<td>Created</td>" +
                 "<td>Done</td>" +
                 "</tr>";
-            var items = JSON.parse(data.responseText);
-            for (var i = 0; i != items.length; ++i) {
-                result += "<tr>" +
-                    "<td>" + items[i].id + "</td>" +
-                    "<td>" + items[i].desc + "</td>" +
-                    "<td>" + items[i].created + "</td>" +
-                    "<td>" + items[i].done + "</td>" +
-                    "</tr>";
-            }
             var table = document.getElementById("items");
-            table.innerHTML(result);
-            */
+            var items = JSON.parse(data.responseText);
+            console.log(items);
+            var j = 0;
+            for (var key in items) {
+                var itemKey = items[key];
+                var newI = document.createElement("tr");
+                var i = 0;
+                for (keyz in itemKey) {
+                    var newV = document.createElement("td");
+                    newV.innerHTML = itemKey[keyz];
+                    newI.insertbefore(newV, newI.children[i]);
+                    i++;
+                }
+                items.insertBefore(newI, items.children[j + 1]);
+                j++;
+            }
+            /*
+            for (var j = 0; j <respJson.length; j++) {
+                for (var i = 0; i < table.rows.length; i++) {
+                    table.cells[i].rows[j + 1].innerHTML = respJson[i + j];
+                }
+                var table = document.getElementById("items");
+                table.innerHTML = result;
+            } */
         }
     })
 });
