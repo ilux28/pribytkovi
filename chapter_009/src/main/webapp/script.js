@@ -22,10 +22,10 @@ $(document).ready(function() {
                 for (keyz in itemKey) {
                     var newV = document.createElement("td");
                     newV.innerHTML = itemKey[keyz];
-                    newI.insertbefore(newV, newI.children[i]);
+                    newI.insertBefore(newV, newI.children[i]);
                     i++;
                 }
-                items.insertBefore(newI, items.children[j + 1]);
+                table.appendChild(newI);
                 j++;
             }
             /*
