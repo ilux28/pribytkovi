@@ -2,19 +2,12 @@ $(document).ready(function() {
     $.ajax('./add', {
         method: 'get',
         complete: function (data) {
-            var respJson = data.responseJSON;
-            console.log(respJson);
+            //var respJson = data.responseJSON;
+            //console.log(respJson);
             //console.log(respJson.size);
-            var result = "<tr>" +
-                "<td>ID</td>" +
-                "<td>Description</td>" +
-                "<td>Created</td>" +
-                "<td>Done</td>" +
-                "</tr>";
             var table = document.getElementById("items");
             var items = JSON.parse(data.responseText);
             console.log(items);
-            var j = 0;
             for (var key in items) {
                 var itemKey = items[key];
                 var newI = document.createElement("tr");
@@ -26,7 +19,6 @@ $(document).ready(function() {
                     i++;
                 }
                 table.appendChild(newI);
-                j++;
             }
             /*
             for (var j = 0; j <respJson.length; j++) {
@@ -37,8 +29,21 @@ $(document).ready(function() {
                 table.innerHTML = result;
             } */
         }
-    })
+    });
 });
+function sendAjaxItem() {
+    $.ajax('./add', {
+        method: 'post',
+        data: {
+            //id: document.getElementsByName("inputDescription").value,
+            description: document.getElementsById("inputDescription").value,
+            created: document.getElementsById("created").value,
+            done:  document.getElementsById("done").value
+        }
+    });
+    return false;
+    console.log("ishe");
+}
 
 
 
