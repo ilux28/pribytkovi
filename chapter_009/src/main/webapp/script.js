@@ -36,9 +36,9 @@ function sendAjaxItem() {
         method: 'post',
         data: {
             //id: document.getElementsByName("inputDescription").value,
-            description: document.getElementsById("inputDescription").value,
-            created: document.getElementsById("created").value,
-            done:  document.getElementsById("done").value
+            description : document.getElementById('inputDescription').value,
+            created: document.getElementById('created').value,
+            done:  document.getElementById('done').value
         }
     });
     return false;
