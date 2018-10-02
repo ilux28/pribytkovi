@@ -32,18 +32,23 @@ $(document).ready(function() {
     });
 });
 function checkedCrea() {
-    if (document.getElementById('created').checked = true) {
-        return document.getElementById('created').value = true;
+    if (document.getElementById('created').checked ) {
+        document.getElementById('created').value = true;
     } else {
-        return document.getElementById('created').value = false;
+        document.getElementById('created').value = false;
+        return true;
     }
+    console.log(document.getElementById('created').checked);
+
 }
 function checkedDone() {
-    if (document.getElementById('done').checked = true) {
-        return document.getElementById('done').value = true;
+    if (document.getElementById('done').checked) {
+        document.getElementById('done').value = true;
     } else {
-        return document.getElementById('done').value = false;
+        document.getElementById('done').value = false;
+        return true;
     }
+    console.log(document.getElementById('done').checked);
 }
 function sendAjaxItem() {
     $.ajax('./add', {
