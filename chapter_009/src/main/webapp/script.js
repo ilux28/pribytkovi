@@ -31,6 +31,20 @@ $(document).ready(function() {
         }
     });
 });
+function checkedCrea() {
+    if (document.getElementById('created').checked = true) {
+        return document.getElementById('created').value = true;
+    } else {
+        return document.getElementById('created').value = false;
+    }
+}
+function checkedDone() {
+    if (document.getElementById('done').checked = true) {
+        return document.getElementById('done').value = true;
+    } else {
+        return document.getElementById('done').value = false;
+    }
+}
 function sendAjaxItem() {
     $.ajax('./add', {
         method: 'post',
@@ -44,6 +58,8 @@ function sendAjaxItem() {
     return false;
     console.log("ishe");
 }
-
+/*
+ *
+     */
 
 
