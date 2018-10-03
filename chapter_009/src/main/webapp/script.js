@@ -31,7 +31,7 @@ $(document).ready(function() {
         }
     });
 });
-function checkedCrea() {
+/*function checkedCrea() {
     if (document.getElementById('created').checked ) {
         document.getElementById('created').value = true;
     } else {
@@ -50,21 +50,17 @@ function checkedDone() {
     }
     console.log(document.getElementById('done').checked);
 }
+*/
 function sendAjaxItem() {
     $.ajax('./add', {
         method: 'post',
         data: {
             //id: document.getElementsByName("inputDescription").value,
             description : document.getElementById('inputDescription').value,
-            created: document.getElementById('created').value,
-            done:  document.getElementById('done').value
+            created: document.getElementById('created').checked,
+            done:  document.getElementById('done').checked
         }
     });
     return false;
     console.log("ishe");
 }
-/*
- *
-     */
-
-
