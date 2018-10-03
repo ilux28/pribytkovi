@@ -20,37 +20,9 @@ $(document).ready(function() {
                 }
                 table.appendChild(newI);
             }
-            /*
-            for (var j = 0; j <respJson.length; j++) {
-                for (var i = 0; i < table.rows.length; i++) {
-                    table.cells[i].rows[j + 1].innerHTML = respJson[i + j];
-                }
-                var table = document.getElementById("items");
-                table.innerHTML = result;
-            } */
         }
     });
 });
-/*function checkedCrea() {
-    if (document.getElementById('created').checked ) {
-        document.getElementById('created').value = true;
-    } else {
-        document.getElementById('created').value = false;
-        return true;
-    }
-    console.log(document.getElementById('created').checked);
-
-}
-function checkedDone() {
-    if (document.getElementById('done').checked) {
-        document.getElementById('done').value = true;
-    } else {
-        document.getElementById('done').value = false;
-        return true;
-    }
-    console.log(document.getElementById('done').checked);
-}
-*/
 function sendAjaxItem() {
     $.ajax('./add', {
         method: 'post',
