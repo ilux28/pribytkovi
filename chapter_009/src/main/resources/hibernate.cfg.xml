@@ -7,7 +7,6 @@
         <property name="connection.username">postgres</property>
         <property name="connection.password">123</property>
         <property name="dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
-
-        <mapping resource="ru/pribytkov/models/User.hbm.xml"/>
+        <mapping resource="ru/pribytkov/models/Item.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

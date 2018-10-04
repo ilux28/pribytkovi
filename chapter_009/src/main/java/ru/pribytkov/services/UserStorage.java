@@ -18,9 +18,9 @@ public class UserStorage {
                 .buildSessionFactory();
         Session session = factory.openSession();
         session.beginTransaction();
-        List<User> users = session.createQuery("from User").list();
-        for (User user : users)
-            System.out.println(user.getName());
+        //List<User> users = session.createQuery("from User").list();
+        //for (User user : users)
+        //    System.out.println(user.getName());
         session.getTransaction().commit();
         session.close();
         factory.close();

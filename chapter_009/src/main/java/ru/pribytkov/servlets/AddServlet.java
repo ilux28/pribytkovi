@@ -1,6 +1,7 @@
 package ru.pribytkov.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ru.pribytkov.services.ItemsStorage;
 import ru.pribytkov.util.Converter;
 import ru.pribytkov.models.Item;
 import javax.servlet.ServletException;
@@ -27,8 +28,12 @@ public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         String description = request.getParameter("description");
-        String created = request.getParameter("created");
-        String done = request.getParameter("done");
+        String create = request.getParameter("created");
+        String don = request.getParameter("done");
+        boolean created = Boolean.parseBoolean(create);
+        boolean done = Boolean.parseBoolean(don);
+        ItemsStorage example = new ItemsStorage();
+        example.addItem(description, created, done);
         System.out.println(id);
         System.out.println(description);
         System.out.println(created);
