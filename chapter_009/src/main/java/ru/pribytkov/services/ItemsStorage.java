@@ -17,5 +17,8 @@ public class ItemsStorage {
         item.setDesc(desc);
         item.setCreated(created);
         item.setDone(done);
+        session.getTransaction().commit();
+        session.close();
+        factory.close();
     }
 }
