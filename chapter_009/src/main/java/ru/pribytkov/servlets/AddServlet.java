@@ -1,7 +1,9 @@
 package ru.pribytkov.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.pribytkov.services.ItemsStorage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.pribytkov.services.ItemsDAO;
 import ru.pribytkov.util.Converter;
 import ru.pribytkov.models.Item;
 import javax.servlet.ServletException;
@@ -13,12 +15,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 @WebServlet(name = "AddServlet")
 public class AddServlet extends HttpServlet {
+    private static final Logger log = LoggerFactory.getLogger(AddServlet.class);
     /*private JSONObject resultJson = new JSONObject();
 
     public JSONObject getResultJson() {
@@ -32,7 +34,7 @@ public class AddServlet extends HttpServlet {
         String don = request.getParameter("done");
         boolean created = Boolean.parseBoolean(create);
         boolean done = Boolean.parseBoolean(don);
-        ItemsStorage example = new ItemsStorage();
+        ItemsDAO example = new ItemsDAO();
         example.addItem(description, created, done);
         System.out.println(id);
         System.out.println(description);
