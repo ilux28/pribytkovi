@@ -1,6 +1,7 @@
 package ru.pribytkov.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hibernate.HibernateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.pribytkov.services.ItemsDAO;
@@ -22,7 +23,6 @@ import org.json.JSONObject;
 public class AddServlet extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(AddServlet.class);
     /*private JSONObject resultJson = new JSONObject();
-
     public JSONObject getResultJson() {
         return resultJson;
     }
@@ -36,10 +36,18 @@ public class AddServlet extends HttpServlet {
         boolean done = Boolean.parseBoolean(don);
         ItemsDAO example = new ItemsDAO();
         example.addItem(description, created, done);
-        System.out.println(id);
-        System.out.println(description);
-        System.out.println(created);
-        System.out.println(done);
+       /* try {
+            ItemsDAO example = new ItemsDAO();
+            example.addItem(description, created, done);
+        } catch (HibernateException e) {
+            log.error(e.getMessage(), e);
+        } finally {
+            System.out.println(id);
+            System.out.println(description);
+            System.out.println(created);
+            System.out.println(done);
+        }
+       */
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
