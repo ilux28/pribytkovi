@@ -19,9 +19,9 @@ import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@WebServlet(name = "AddServlet")
-public class AddServlet extends HttpServlet {
-    private static final Logger log = LoggerFactory.getLogger(AddServlet.class);
+@WebServlet(name = "ControllerServlet")
+public class ControllerServlet extends HttpServlet {
+    private static final Logger log = LoggerFactory.getLogger(ControllerServlet.class);
     /*private JSONObject resultJson = new JSONObject();
     public JSONObject getResultJson() {
         return resultJson;
@@ -34,9 +34,13 @@ public class AddServlet extends HttpServlet {
         String don = request.getParameter("done");
         boolean created = Boolean.parseBoolean(create);
         boolean done = Boolean.parseBoolean(don);
-        ItemsDAO example = new ItemsDAO();
-        example.addItem(description, created, done);
-       /* try {
+        //ItemsDAO example = new ItemsDAO();
+        //example.addItem(description, created, done);
+        System.out.println(id);
+        System.out.println(description);
+        System.out.println(created);
+        System.out.println(done);
+        /*try {
             ItemsDAO example = new ItemsDAO();
             example.addItem(description, created, done);
         } catch (HibernateException e) {
@@ -47,9 +51,8 @@ public class AddServlet extends HttpServlet {
             System.out.println(created);
             System.out.println(done);
         }
-       */
+        */
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json");
         response.setCharacterEncoding("utf-8");

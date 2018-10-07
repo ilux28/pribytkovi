@@ -1,8 +1,14 @@
 <web-app>
-    <!-- add servlet-->
+    <!--listener-->
+    <listener>
+        <listener-class>
+            ru.pribytkov.servlets.ControllerContextListener
+        </listener-class>
+    </listener>
+    <!-- controller servlet-->
     <servlet>
         <servlet-name>add</servlet-name>
-        <servlet-class>ru.pribytkov.servlets.AddServlet</servlet-class>
+        <servlet-class>ru.pribytkov.servlets.ControllerServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>add</servlet-name>

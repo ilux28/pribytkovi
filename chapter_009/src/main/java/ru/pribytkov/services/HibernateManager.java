@@ -8,7 +8,9 @@ import ru.pribytkov.models.Item;
 
 public class HibernateManager {
     private static HibernateManager instance;
+    private static SessionFactory factory;
     private HibernateManager() {
+
     }
     public static synchronized HibernateManager getInstance() {
         if (instance == null) {
@@ -17,12 +19,19 @@ public class HibernateManager {
         return instance;
     }
     public Session getSession() {
-        HibernateManager inst = new HibernateManager();
+        Session session = this.factory.openSession();
+        return session;
+    }
+    public void initFactory() {
         SessionFactory factory = new Configuration()
                 .configure()
                 .buildSessionFactory();
-        Session session = factory.openSession();
-        return session;
+        this.factory = factory;
     }
-
+    public SessionFactory getFactory() {
+        return this.factory;
+    }
+    public void closeFactory() {
+        this.factory.close();
+    }
 }
