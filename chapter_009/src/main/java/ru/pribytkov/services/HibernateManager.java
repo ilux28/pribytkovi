@@ -10,7 +10,6 @@ public class HibernateManager {
     private static HibernateManager instance;
     private static SessionFactory factory;
     private HibernateManager() {
-
     }
     public static synchronized HibernateManager getInstance() {
         if (instance == null) {
@@ -22,13 +21,12 @@ public class HibernateManager {
         Session session = this.factory.openSession();
         return session;
     }
-    public void initFactory() {
-        SessionFactory factory = new Configuration()
-                .configure()
-                .buildSessionFactory();
-        this.factory = factory;
-    }
     public SessionFactory getFactory() {
+        if (this.factory == null) {
+            this.factory = new Configuration()
+                    .configure()
+                    .buildSessionFactory();
+        }
         return this.factory;
     }
     public void closeFactory() {
