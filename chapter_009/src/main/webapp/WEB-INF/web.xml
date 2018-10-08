@@ -8,7 +8,7 @@
     <!-- controller servlet-->
     <servlet>
         <servlet-name>add</servlet-name>
-        <servlet-class>ru.pribytkov.servlets.ControllerServlet</servlet-class>
+        <servlet-class></servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>add</servlet-name>
