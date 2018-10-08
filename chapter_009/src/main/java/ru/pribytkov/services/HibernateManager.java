@@ -7,15 +7,12 @@ import org.hibernate.cfg.Configuration;
 import ru.pribytkov.models.Item;
 
 public class HibernateManager {
-    private static HibernateManager instance;
+    private static final HibernateManager INSTANCE = new HibernateManager();
     private static SessionFactory factory;
     private HibernateManager() {
     }
     public static synchronized HibernateManager getInstance() {
-        if (instance == null) {
-            instance = new HibernateManager();
-        }
-        return instance;
+        return INSTANCE;
     }
     public Session getSession() {
         Session session = this.factory.openSession();
