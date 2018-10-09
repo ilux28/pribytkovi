@@ -10,6 +10,7 @@ public class HibernateManager {
     private static final HibernateManager INSTANCE = new HibernateManager();
     private static SessionFactory factory;
     private HibernateManager() {
+        getFactory();
     }
     public static synchronized HibernateManager getInstance() {
         return INSTANCE;
