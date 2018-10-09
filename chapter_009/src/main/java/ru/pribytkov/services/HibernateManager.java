@@ -19,9 +19,9 @@ public class HibernateManager {
         factory.close();
     }
     public void openFactory() {
-        factory = new Configuration().configure().buildSessionFactory();
+        this.factory = new Configuration().configure().buildSessionFactory();
     }
     public Session getSession() {
-        return factory.openSession();
+        return this.factory.openSession();
     }
 }
