@@ -21,4 +21,7 @@ public class HibernateManager {
     public void openFactory() {
         factory = new Configuration().configure().buildSessionFactory();
     }
+    public Session getSession() {
+        return factory.openSession();
+    }
 }

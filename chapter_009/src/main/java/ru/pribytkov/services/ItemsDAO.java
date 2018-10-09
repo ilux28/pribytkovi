@@ -8,10 +8,9 @@ import org.hibernate.cfg.Configuration;
 import ru.pribytkov.models.Item;
 
 public class ItemsDAO {
-    private static final HibernateManager FACTORY = HibernateManager.getInstance();
 
     public void addItem(String desc, boolean created, boolean done) {
-        Session session = FACTORY.getSession();
+        Session session = HibernateManager.getInstance().getSession();
         Transaction tr = session.beginTransaction();
         Item item = new Item();
         item.setDesc(desc);
