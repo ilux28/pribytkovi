@@ -10,7 +10,7 @@ public class ControllerContextListener implements ServletContextListener {
 
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-      HibernateManager.getInstance().getFactory();
+      HibernateManager.getInstance();
     }
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
        HibernateManager.getInstance().closeFactory();

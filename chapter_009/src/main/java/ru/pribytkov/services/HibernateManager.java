@@ -7,27 +7,18 @@ import org.hibernate.cfg.Configuration;
 import ru.pribytkov.models.Item;
 
 public class HibernateManager {
-    private static final HibernateManager INSTANCE = new HibernateManager();
     private static SessionFactory factory;
+    private static final HibernateManager INSTANCE = new HibernateManager();
     private HibernateManager() {
-        getFactory();
+        openFactory();
     }
-    public static synchronized HibernateManager getInstance() {
+    public static HibernateManager getInstance() {
         return INSTANCE;
     }
-    public Session getSession() {
-        Session session = this.factory.openSession();
-        return session;
-    }
-    public SessionFactory getFactory() {
-        if (this.factory == null) {
-            this.factory = new Configuration()
-                    .configure()
-                    .buildSessionFactory();
-        }
-        return this.factory;
-    }
     public void closeFactory() {
-        this.factory.close();
+        factory.close();
+    }
+    public void openFactory() {
+        factory = new Configuration().configure().buildSessionFactory();
     }
 }
