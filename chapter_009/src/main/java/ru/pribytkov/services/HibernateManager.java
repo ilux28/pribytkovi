@@ -5,12 +5,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import ru.pribytkov.models.Item;
-
 public class HibernateManager {
     private static SessionFactory factory;
     private static final HibernateManager INSTANCE = new HibernateManager();
     private HibernateManager() {
-        openFactory();
+        this.openFactory();
     }
     public static HibernateManager getInstance() {
         return INSTANCE;
@@ -21,7 +20,7 @@ public class HibernateManager {
     public void openFactory() {
         this.factory = new Configuration().configure().buildSessionFactory();
     }
-    public Session getSession() {
-        return this.factory.openSession();
+    public SessionFactory getFactory() {
+        return this.factory;
     }
 }
