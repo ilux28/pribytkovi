@@ -2,11 +2,14 @@ package ru.pribytkov.servlets;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.pribytkov.services.ItemsDAO;
 import ru.pribytkov.util.Converter;
 import ru.pribytkov.models.Item;
+
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +31,7 @@ public class ControllerServlet extends HttpServlet {
     }
     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Session session = getServletContext().getAttribute("factory").openSession();
         String id = request.getParameter("id");
         String description = request.getParameter("description");
         String create = request.getParameter("created");

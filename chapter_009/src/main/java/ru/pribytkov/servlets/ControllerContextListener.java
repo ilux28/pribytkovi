@@ -9,14 +9,16 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 public class ControllerContextListener implements ServletContextListener {
-
+    private SessionFactory factory;
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        //ServletContext context = servletContextEvent.getServletContext();
-        HibernateManager.getInstance();
-        //context.setAttribute("factory", factory);
+        ServletContext context = servletContextEvent.getServletContext();
+        this.factory = new Configuration().configure().buildSessionFactory();
+        context.setAttribute("factory", this.factory);
+        //HibernateManager.getInstance();
     }
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-       HibernateManager.getInstance().closeFactory();
+        this.factory.close();
+       //HibernateManager.getInstance().closeFactory();
     }
 }
