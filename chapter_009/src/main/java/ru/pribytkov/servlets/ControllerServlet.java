@@ -63,7 +63,7 @@ public class ControllerServlet extends HttpServlet {
         String isId = Integer.toString((int) itemSecond.getId());
         map.put(ifId, itemFirst);
         map.put(isId, itemSecond);
-        Converter converter = new Converter();
+        //Converter converter = new Converter();
         String sendJson = new ObjectMapper().writeValueAsString(map);
                 // converter.toJSON(itemFirst);
         PrintWriter writer = new PrintWriter(response.getOutputStream());

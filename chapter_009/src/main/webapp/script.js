@@ -34,5 +34,4 @@ function sendAjaxItem() {
         }
     });
     return false;
-    console.log("ishe");
 }
