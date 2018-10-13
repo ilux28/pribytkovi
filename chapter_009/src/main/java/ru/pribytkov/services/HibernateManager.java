@@ -9,7 +9,7 @@ public class HibernateManager {
     private static SessionFactory factory;
     private static final HibernateManager INSTANCE = new HibernateManager();
     private HibernateManager() {
-        this.openFactory();
+        openFactory();
     }
     public static HibernateManager getInstance() {
         return INSTANCE;
@@ -22,5 +22,8 @@ public class HibernateManager {
     }
     public SessionFactory getFactory() {
         return this.factory;
+    }
+    public Session getSession() {
+        return this.factory.openSession();
     }
 }

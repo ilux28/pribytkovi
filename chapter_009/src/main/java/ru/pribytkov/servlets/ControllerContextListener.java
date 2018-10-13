@@ -12,11 +12,11 @@ public class ControllerContextListener implements ServletContextListener {
 
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        ServletContext context = servletContextEvent.getServletContext();
-        SessionFactory factory = HibernateManager.getInstance().getFactory();
-        context.setAttribute("factory", factory);
+        //ServletContext context = servletContextEvent.getServletContext();
+        //HibernateManager.getInstance();
+        //context.setAttribute("factory", factory);
     }
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-       HibernateManager.getInstance().closeFactory();
+       //HibernateManager.getInstance().closeFactory();
     }
 }
