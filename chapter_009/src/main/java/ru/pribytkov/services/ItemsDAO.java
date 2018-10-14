@@ -22,6 +22,8 @@ public class ItemsDAO {
         item.setDone(done);
         try {
             session.save(item);
+            items = session.createQuery("from Item").list();
+            System.out.println(items);
             System.out.println("Transaction was committed succeful");
         } catch (HibernateException e) {
             tr.rollback();
@@ -30,8 +32,6 @@ public class ItemsDAO {
             tr.commit();
             session.close();
             HibernateManager.getInstance().closeFactory();
-            items = session.createQuery("from Item").list();
-            System.out.println(items);
         }
     }
 }
