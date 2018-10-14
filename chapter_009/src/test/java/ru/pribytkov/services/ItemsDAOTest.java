@@ -15,12 +15,12 @@ import static org.junit.Assert.*;
 
 public class ItemsDAOTest {
     @Test
-    public void addItemDAO(Session session) {
-        /*SessionFactory factory = new Configuration()
+    public void addItemDAO() {
+        SessionFactory factory = new Configuration()
                 .configure()
                 .buildSessionFactory();
-        //Session session = factory.openSession(); с ним работает
-        */
+        Session session = factory.openSession(); //с ним работает
+
         //Session session = HibernateManager.getInstance().getSession();
         Transaction tr = session.beginTransaction();
         List<Item> items = new ArrayList<Item>();
@@ -36,6 +36,7 @@ public class ItemsDAOTest {
         System.out.println(items);
         tr.commit();
         session.close();
+        factory.close();
         //HibernateManager.getInstance().closeFactory();
     }
 }
