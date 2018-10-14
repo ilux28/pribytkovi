@@ -6,13 +6,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import ru.pribytkov.models.Item;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemsDAO {
-    public void addItem(Session session, String desc, boolean created, boolean done) {
-        //Session session = HibernateManager.getInstance().getSession();
+    public void addItem(String desc, boolean created, boolean done) {
+        Session session = HibernateManager.getInstance().getSession();
         Transaction tr = session.beginTransaction();
         List<Item> items = new ArrayList<Item>();
         Item item = new Item();
