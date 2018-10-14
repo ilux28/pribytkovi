@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import ru.pribytkov.services.ItemsDAO;
 import ru.pribytkov.util.Converter;
 import ru.pribytkov.models.Item;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,12 +44,10 @@ public class ControllerServlet extends HttpServlet {
         System.out.println(desc);
         System.out.println(created);
         System.out.println(done);
-        SessionFactory factory = new Configuration()
-                .configure()
-                .buildSessionFactory();
-        Session session = factory.openSession(); //с ним работает
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        Session session = factory.openSession();     //с ним работает
         List<Item> items = new ArrayList<Item>();
-        Item item = new Item();
+        //Item item = new Item();
         items = session.createQuery("from Item").list();
         desc = "This is " + items.size() + 1  + " description of test";
         ItemsDAO itemDao = new ItemsDAO();
@@ -60,7 +57,6 @@ public class ControllerServlet extends HttpServlet {
             e.printStackTrace();
         }
         factory.close();
-
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json");
