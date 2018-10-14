@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 public class ItemsDAOTest {
     @Test
-    public void addItemDAO() {
+    public void addItemDAO() throws Exception {
         SessionFactory factory = new Configuration()
                 .configure()
                 .buildSessionFactory();
@@ -26,17 +26,20 @@ public class ItemsDAOTest {
         List<Item> items = new ArrayList<Item>();
         Item item = new Item();
         items = session.createQuery("from Item").list();
-        String desc = "This is " +items.size() + " description of test";
+        String desc = "This is " + items.size() + " description of test";
         boolean created = true;
         boolean done = true;
-        item.setDesc(desc);
+        ItemsDAO itemDao = new ItemsDAO();
+        itemDao.addItem(session, desc, created, done);
+        /*item.setDesc(desc);
         item.setCreated(created);
         item.setDone(done);
         session.save(item);
-        System.out.println(items);
-        tr.commit();
-        session.close();
+        */
+        //tr.commit();
+        //items = session.createQuery("from Item").list();
+        //System.out.println(items);
+        //session.close();
         factory.close();
-        //HibernateManager.getInstance().closeFactory();
     }
 }

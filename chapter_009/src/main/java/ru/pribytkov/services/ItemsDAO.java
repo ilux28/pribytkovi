@@ -10,10 +10,10 @@ import ru.pribytkov.models.Item;
 import java.util.List;
 
 public class ItemsDAO {
-    public void addItem(String desc, boolean created, boolean done) throws Exception, HibernateException {
+    public void addItem(Session session, String desc, boolean created, boolean done) throws Exception, HibernateException {
         //Session session = HibernateManager.getInstance().getSession();
-        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        Session session = factory.openSession();
+        //SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        //Session session = factory.openSession();
         Transaction tr = session.beginTransaction();
         List items;
         Item item = new Item();
@@ -33,7 +33,6 @@ public class ItemsDAO {
         } finally {
             tr.commit();
             session.close();
-            factory.close();
         }
     }
 }
