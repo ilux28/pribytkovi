@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemsDAO {
-    public void addItem(String desc, boolean created, boolean done) {
-        Session session = HibernateManager.getInstance().getSession();
+    public void addItem(Session session, String desc, boolean created, boolean done) {
+        //Session session = HibernateManager.getInstance().getSession();
         Transaction tr = session.beginTransaction();
         List<Item> items = new ArrayList<Item>();
         Item item = new Item();
@@ -31,7 +31,6 @@ public class ItemsDAO {
         } finally {
             tr.commit();
             session.close();
-            HibernateManager.getInstance().closeFactory();
         }
     }
 }

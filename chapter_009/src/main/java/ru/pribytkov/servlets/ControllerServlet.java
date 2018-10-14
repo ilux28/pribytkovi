@@ -3,6 +3,8 @@ package ru.pribytkov.servlets;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.pribytkov.services.ItemsDAO;
@@ -32,30 +34,22 @@ public class ControllerServlet extends HttpServlet {
     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Session session = getServletContext().getAttribute("factory").openSession();
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
+        Session session = factory.openSession();
         String id = request.getParameter("id");
         String description = request.getParameter("description");
         String create = request.getParameter("created");
         String don = request.getParameter("done");
         boolean created = Boolean.parseBoolean(create);
         boolean done = Boolean.parseBoolean(don);
-        ItemsDAO example = new ItemsDAO();
-        example.addItem(description, created, done);
         System.out.println(id);
         System.out.println(description);
         System.out.println(created);
         System.out.println(done);
-        /*try {
-            ItemsDAO example = new ItemsDAO();
-            example.addItem(description, created, done);
-        } catch (HibernateException e) {
-            log.error(e.getMessage(), e);
-        } finally {
-            System.out.println(id);
-            System.out.println(description);
-            System.out.println(created);
-            System.out.println(done);
-        }
-        */
+        ItemsDAO example = new ItemsDAO();
+        example.addItem(session, description, created, done);
+        factory.close();
+
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json");
