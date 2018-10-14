@@ -6,11 +6,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import ru.pribytkov.models.Item;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 
 public class ItemsDAO {
-    public void addItem(String desc, boolean created, boolean done) {
+    public void addItem(String desc, boolean created, boolean done) throws Exception, HibernateException {
         //Session session = HibernateManager.getInstance().getSession();
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();
@@ -28,6 +28,7 @@ public class ItemsDAO {
             System.out.println(items);
         } catch (HibernateException e) {
             tr.rollback();
+            e.printStackTrace();
             throw e;
         } finally {
             tr.commit();

@@ -45,7 +45,11 @@ public class ControllerServlet extends HttpServlet {
         System.out.println(created);
         System.out.println(done);
         ItemsDAO example = new ItemsDAO();
-        example.addItem(description, created, done);
+        try {
+            example.addItem(description, created, done);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println();
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
