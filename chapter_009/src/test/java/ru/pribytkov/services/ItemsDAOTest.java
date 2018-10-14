@@ -7,7 +7,6 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.junit.Test;
 import ru.pribytkov.models.Item;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,26 +19,14 @@ public class ItemsDAOTest {
                 .configure()
                 .buildSessionFactory();
         Session session = factory.openSession(); //с ним работает
-
-        //Session session = HibernateManager.getInstance().getSession();
-        //Transaction tr = session.beginTransaction();
         List<Item> items = new ArrayList<Item>();
         Item item = new Item();
         items = session.createQuery("from Item").list();
-        String desc = "This is " + items.size() + " description of test";
+        String desc = "This is " + items.size() + 1  + " description of test";
         boolean created = true;
         boolean done = true;
         ItemsDAO itemDao = new ItemsDAO();
         itemDao.addItem(session, desc, created, done);
-        /*item.setDesc(desc);
-        item.setCreated(created);
-        item.setDone(done);
-        session.save(item);
-        */
-        //tr.commit();
-        //items = session.createQuery("from Item").list();
-        //System.out.println(items);
-        //session.close();
         factory.close();
     }
 }

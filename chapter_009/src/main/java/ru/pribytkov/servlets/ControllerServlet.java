@@ -19,7 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,24 +35,31 @@ public class ControllerServlet extends HttpServlet {
     }
     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //Session session = getServletContext().getAttribute("factory").openSession();
-        Session session = null;
         String id = request.getParameter("id");
-        String description = request.getParameter("description");
+        String desc = request.getParameter("description");
         String create = request.getParameter("created");
         String don = request.getParameter("done");
         boolean created = Boolean.parseBoolean(create);
         boolean done = Boolean.parseBoolean(don);
         System.out.println(id);
-        System.out.println(description);
+        System.out.println(desc);
         System.out.println(created);
         System.out.println(done);
-        ItemsDAO example = new ItemsDAO();
+        SessionFactory factory = new Configuration()
+                .configure()
+                .buildSessionFactory();
+        Session session = factory.openSession(); //с ним работает
+        List<Item> items = new ArrayList<Item>();
+        Item item = new Item();
+        items = session.createQuery("from Item").list();
+        desc = "This is " + items.size() + 1  + " description of test";
+        ItemsDAO itemDao = new ItemsDAO();
         try {
-            example.addItem(session, description, created, done);
+            itemDao.addItem(session, desc, created, done);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        factory.close();
 
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
