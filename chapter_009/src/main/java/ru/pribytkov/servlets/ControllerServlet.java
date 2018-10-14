@@ -34,6 +34,7 @@ public class ControllerServlet extends HttpServlet {
     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Session session = getServletContext().getAttribute("factory").openSession();
+        Session session = null;
         String id = request.getParameter("id");
         String description = request.getParameter("description");
         String create = request.getParameter("created");
@@ -46,7 +47,7 @@ public class ControllerServlet extends HttpServlet {
         System.out.println(done);
         ItemsDAO example = new ItemsDAO();
         try {
-            example.addItem(description, created, done);
+            example.addItem(session, description, created, done);
         } catch (Exception e) {
             e.printStackTrace();
         }

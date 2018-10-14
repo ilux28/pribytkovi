@@ -22,7 +22,7 @@ public class ItemsDAOTest {
         Session session = factory.openSession(); //с ним работает
 
         //Session session = HibernateManager.getInstance().getSession();
-        Transaction tr = session.beginTransaction();
+        //Transaction tr = session.beginTransaction();
         List<Item> items = new ArrayList<Item>();
         Item item = new Item();
         items = session.createQuery("from Item").list();
