@@ -29,6 +29,7 @@ public class ItemsDAO {
         } finally {
             tr.commit();
             session.close();
+            HibernateManager.getInstance().closeFactory();
         }
     }
 }
