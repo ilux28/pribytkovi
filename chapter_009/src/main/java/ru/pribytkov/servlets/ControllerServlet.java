@@ -38,8 +38,8 @@ public class ControllerServlet extends HttpServlet {
         String don = request.getParameter("done");
         boolean created = Boolean.parseBoolean(create);
         boolean done = Boolean.parseBoolean(don);
-        //ItemsDAO example = new ItemsDAO();
-        //example.addItem(description, created, done);
+        ItemsDAO example = new ItemsDAO();
+        example.addItem(description, created, done);
         System.out.println(id);
         System.out.println(description);
         System.out.println(created);
