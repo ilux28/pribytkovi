@@ -36,6 +36,6 @@ public class ItemsDAOTest {
         System.out.println(items);
         tr.commit();
         session.close();
-        HibernateManager.getInstance().closeFactory();
+        //HibernateManager.getInstance().closeFactory();
     }
 }

@@ -34,8 +34,6 @@ public class ControllerServlet extends HttpServlet {
     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Session session = getServletContext().getAttribute("factory").openSession();
-        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        Session session = factory.openSession();
         String id = request.getParameter("id");
         String description = request.getParameter("description");
         String create = request.getParameter("created");
@@ -47,9 +45,8 @@ public class ControllerServlet extends HttpServlet {
         System.out.println(created);
         System.out.println(done);
         ItemsDAO example = new ItemsDAO();
-        example.addItem(session, description, created, done);
-        factory.close();
-
+        example.addItem(description, created, done);
+        System.out.println();
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json");
