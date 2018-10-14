@@ -30,6 +30,8 @@ public class ItemsDAO {
             tr.commit();
             session.close();
             HibernateManager.getInstance().closeFactory();
+            items = session.createQuery("from Item").list();
+            System.out.println(items);
         }
     }
 }
