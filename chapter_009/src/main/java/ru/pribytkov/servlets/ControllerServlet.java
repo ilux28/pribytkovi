@@ -43,8 +43,6 @@ public class ControllerServlet extends HttpServlet {
         List<Item> items = new ArrayList<Item>();
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();     //с ним работает
-
-        //Item item = new Item();
         items = session.createQuery("from Item").list();
         System.out.println(items);
         desc = "This is " + items.size() + 1  + " description of test";
