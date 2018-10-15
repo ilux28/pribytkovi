@@ -25,7 +25,7 @@ import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-//@WebServlet(name = "ControllerServlet")
+@WebServlet(name = "ControllerServlet")
 public class ControllerServlet extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(ControllerServlet.class);
 
