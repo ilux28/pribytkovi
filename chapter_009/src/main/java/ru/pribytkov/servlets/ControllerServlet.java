@@ -28,11 +28,7 @@ import org.json.JSONObject;
 //@WebServlet(name = "ControllerServlet")
 public class ControllerServlet extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(ControllerServlet.class);
-    /*private JSONObject resultJson = new JSONObject();
-    public JSONObject getResultJson() {
-        return resultJson;
-    }
-    */
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         String desc = request.getParameter("description");
@@ -49,6 +45,7 @@ public class ControllerServlet extends HttpServlet {
         List<Item> items = new ArrayList<Item>();
         //Item item = new Item();
         items = session.createQuery("from Item").list();
+        System.out.println(items);
         desc = "This is " + items.size() + 1  + " description of test";
         ItemsDAO itemDao = new ItemsDAO();
         try {
