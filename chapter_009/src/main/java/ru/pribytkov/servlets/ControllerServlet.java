@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.pribytkov.services.HibernateManager;
 import ru.pribytkov.services.ItemsDAO;
 import ru.pribytkov.util.Converter;
 import ru.pribytkov.models.Item;
@@ -36,13 +37,8 @@ public class ControllerServlet extends HttpServlet {
         String don = request.getParameter("done");
         boolean created = Boolean.parseBoolean(create);
         boolean done = Boolean.parseBoolean(don);
-        System.out.println(id);
-        System.out.println(desc);
-        System.out.println(created);
-        System.out.println(done);
-        List<Item> items = new ArrayList<Item>();
-        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        Session session = factory.openSession();     //с ним работает
+        List items = new ArrayList<Item>();
+        Session session = HibernateManager.getInstance().getSession();
         items = session.createQuery("from Item").list();
         System.out.println(items);
         desc = "This is " + items.size() + 1  + " description of test";
@@ -52,18 +48,21 @@ public class ControllerServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        factory.close();
+
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json");
         response.setCharacterEncoding("utf-8");
-        Item itemFirst = new Item(1, "Description of first iitem", true, true);
-        Item itemSecond = new Item(2, "Description of second iitem", true, false);
+
+        Session session = HibernateManager.getInstance().getSession();
         Map<String, Item> map = new HashMap<String, Item>();
-        String ifId = Integer.toString((int) itemFirst.getId());
-        String isId = Integer.toString((int) itemSecond.getId());
-        map.put(ifId, itemFirst);
-        map.put(isId, itemSecond);
+        List<Item> items = new ArrayList<Item>();
+        items = session.createQuery("from Item").list();
+        for (Item item : items) {
+            String str = Integer.toString((int)item.getId());
+            map.put(str, item);
+        }
+        session.close();
         //Converter converter = new Converter();
         String sendJson = new ObjectMapper().writeValueAsString(map);
                 // converter.toJSON(itemFirst);

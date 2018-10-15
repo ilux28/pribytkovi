@@ -17,13 +17,13 @@ public class HibernateManager {
     public void closeFactory() {
         factory.close();
     }
-    public void openFactory() {
-        this.factory = new Configuration().configure().buildSessionFactory();
+    private void openFactory() {
+        factory = new Configuration().configure().buildSessionFactory();
     }
     public SessionFactory getFactory() {
-        return this.factory;
+        return factory;
     }
     public Session getSession() {
-        return this.factory.openSession();
+        return factory.openSession();
     }
 }

@@ -15,14 +15,14 @@ public class ControllerContextListener implements ServletContextListener {
       /*  ServletContext context = servletContextEvent.getServletContext();
         this.factory = new Configuration().configure().buildSessionFactory();
         context.setAttribute("factory", this.factory);
-        //HibernateManager.getInstance();
         */
+        HibernateManager.getInstance();
+
     }
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        /*
-        this.factory.close();
-       //HibernateManager.getInstance().closeFactory();
-       */
+
+       HibernateManager.getInstance().closeFactory();
+
     }
 
 }
