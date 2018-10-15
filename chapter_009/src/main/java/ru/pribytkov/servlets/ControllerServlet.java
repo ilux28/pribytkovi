@@ -40,9 +40,10 @@ public class ControllerServlet extends HttpServlet {
         System.out.println(desc);
         System.out.println(created);
         System.out.println(done);
+        List<Item> items = new ArrayList<Item>();
         SessionFactory factory = new Configuration().configure().buildSessionFactory();
         Session session = factory.openSession();     //с ним работает
-        List<Item> items = new ArrayList<Item>();
+
         //Item item = new Item();
         items = session.createQuery("from Item").list();
         System.out.println(items);
