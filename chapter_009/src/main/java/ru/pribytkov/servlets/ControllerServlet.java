@@ -49,7 +49,7 @@ public class ControllerServlet extends HttpServlet {
             e.printStackTrace();
         }
         //request.getRequestDispatcher("/WEB-INF/index.html").forward(request, response);
-        response.sendRedirect(String.format("%s/", request.getContextPath()));
+        response.sendRedirect(String.format("%s/index.html", request.getContextPath()));
         System.out.println("pizda");
         log.error("op");
         log.info("iop");
