@@ -48,7 +48,7 @@ public class ControllerServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        doGet(request, response);
+        request.getRequestDispatcher("/WEB-INF/index.html").forward(request, response);
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json");

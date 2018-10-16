@@ -2,9 +2,6 @@ $(document).ready(function() {
     $.ajax('./add', {
         method: 'get',
         complete: function (data) {
-            //var respJson = data.responseJSON;
-            //console.log(respJson);
-            //console.log(respJson.size);
             var table = document.getElementById("items");
             var items = JSON.parse(data.responseText);
             console.log(items);
