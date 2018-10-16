@@ -51,6 +51,8 @@ public class ControllerServlet extends HttpServlet {
         //request.getRequestDispatcher("/WEB-INF/index.html").forward(request, response);
         response.sendRedirect(String.format("%s/", request.getContextPath()));
         System.out.println("pizda");
+        log.error("op");
+        log.info("iop");
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json");
