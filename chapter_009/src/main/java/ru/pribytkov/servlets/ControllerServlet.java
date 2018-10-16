@@ -48,12 +48,11 @@ public class ControllerServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        doGet(request, response);
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json");
         response.setCharacterEncoding("utf-8");
-
         Session session = HibernateManager.getInstance().getSession();
         Map<String, Item> map = new HashMap<String, Item>();
         List<Item> items = new ArrayList<Item>();
