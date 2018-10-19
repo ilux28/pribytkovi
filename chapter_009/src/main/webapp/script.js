@@ -1,4 +1,5 @@
-$(document).ready(function() {
+$(document).ready(complete());
+function complete() {
     $.ajax('./add', {
         method: 'get',
         complete: function (data) {
@@ -19,7 +20,8 @@ $(document).ready(function() {
             }
         }
     });
-});
+}
+
 function sendAjaxItem() {
     $.ajax('./add', {
         method: 'post',
