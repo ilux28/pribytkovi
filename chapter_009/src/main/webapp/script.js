@@ -1,8 +1,6 @@
-$(document).ready( complete());
-function complete() {
-    $.ajax('./add', {
+$(document).ready( $.ajax('./add', {
         method: 'get',
-        success: function (data) {
+        complete : function (data) {
             var table = document.getElementById("items");
             var items = JSON.parse(data.responseText);
             console.log(items);
@@ -19,7 +17,6 @@ function complete() {
                 table.appendChild(newI);
             }
         }
-    })
 }
 
 
