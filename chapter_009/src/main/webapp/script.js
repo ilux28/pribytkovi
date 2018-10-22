@@ -28,7 +28,7 @@ $('#myButton').click(
             created: document.getElementById('created').checked,
             done: document.getElementById('done').checked
         }
-    }), complete())
+    }), complete());
 
 
 
