@@ -22,7 +22,7 @@ function complete() {
     })
 }
 
-$('#myButton').click(sendAjaxItem(), complete());
+
 function sendAjaxItem() {
     $.ajax('./add', {
         method: 'post',
@@ -33,5 +33,6 @@ function sendAjaxItem() {
             done:  document.getElementById('done').checked
         }
     });
-    return false;
+    return complete();
 }
+
