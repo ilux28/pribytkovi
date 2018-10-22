@@ -1,4 +1,4 @@
-$(document).ready( $.ajax('./add', {
+$(document).ready( $.ajax("./add", {
         method: 'get',
         complete : function (data) {
             var table = document.getElementById("items");
@@ -17,9 +17,8 @@ $(document).ready( $.ajax('./add', {
                 table.appendChild(newI);
             }
         }
-}
-
-
+})
+);
 function sendAjaxItem() {
     $.ajax('./add', {
         method: 'post',
