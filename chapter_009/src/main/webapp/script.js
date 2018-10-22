@@ -19,16 +19,16 @@ $(document).ready( $.ajax("./add", {
         }
 })
 );
-function sendAjaxItem() {
+$('#myButton').click(
     $.ajax('./add', {
         method: 'post',
         data: {
             //id: document.getElementsByName("inputDescription").value,
-            description : document.getElementById('inputDescription').value,
+            description: document.getElementById('inputDescription').value,
             created: document.getElementById('created').checked,
-            done:  document.getElementById('done').checked
+            done: document.getElementById('done').checked
         }
-    });
-    return complete();
-}
+    }), complete())
+
+
 
