@@ -1,6 +1,9 @@
 $(document).ready(getData());
 
-$('#myButton').click(sendData(), getData());
+$('#myButton').click(function() {
+    sendData();
+    getData()
+});
 
 function sendData() {
     $.ajax('./add', {
