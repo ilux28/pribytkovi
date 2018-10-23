@@ -1,4 +1,20 @@
-$(document).ready( $.ajax("./add", {
+$(document).ready(getData());
+
+$('#myButton').click(sendData(), getData());
+
+function sendData() {
+    $.ajax('./add', {
+        method: 'post',
+        data: {
+            //id: document.getElementsByName("inputDescription").value,
+            description: document.getElementById('inputDescription').value,
+            created: document.getElementById('created').checked,
+            done: document.getElementById('done').checked
+        }
+    });
+}
+function getData() {
+    $.ajax("./add", {
         method: 'get',
         complete : function (data) {
             var table = document.getElementById("items");
@@ -17,18 +33,8 @@ $(document).ready( $.ajax("./add", {
                 table.appendChild(newI);
             }
         }
-})
-);
-$('#myButton').click(
-    $.ajax('./add', {
-        method: 'post',
-        data: {
-            //id: document.getElementsByName("inputDescription").value,
-            description: document.getElementById('inputDescription').value,
-            created: document.getElementById('created').checked,
-            done: document.getElementById('done').checked
-        }
-    }), complete());
+    })
+}
 
 
 
