@@ -10,7 +10,7 @@ function sendData() {
             created: document.getElementById('created').checked,
             done: document.getElementById('done').checked
         },
-        success : getData()
+        success : getData
     });
 }
 function getData() {
