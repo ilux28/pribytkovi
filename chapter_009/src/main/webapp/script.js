@@ -1,9 +1,5 @@
 $(document).ready(getData());
 
-$('#myButton').click(function() {
-    sendData();
-    getData()
-});
 
 function sendData() {
     $.ajax('./add', {
@@ -13,7 +9,8 @@ function sendData() {
             description: document.getElementById('inputDescription').value,
             created: document.getElementById('created').checked,
             done: document.getElementById('done').checked
-        }
+        },
+        success : getData()
     });
 }
 function getData() {
