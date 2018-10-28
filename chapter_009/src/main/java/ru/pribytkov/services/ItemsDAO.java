@@ -11,11 +11,6 @@ import java.util.List;
 
 public class ItemsDAO {
     public void addItem(Session session, String desc, boolean created, boolean done) throws Exception, HibernateException {
-        /*
-        Session session = HibernateManager.getInstance().getSession();
-        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        Session session = factory.openSession();
-        */
         Transaction tr = session.beginTransaction();
         List items;
         Item item = new Item();
@@ -28,6 +23,22 @@ public class ItemsDAO {
             session.save(item);
             items = session.createQuery("from Item").list();
             System.out.println(items);
+        } catch (HibernateException e) {
+            tr.rollback();
+            e.printStackTrace();
+            throw e;
+        } finally {
+            tr.commit();
+            session.close();
+        }
+    }
+    public void deleteItem(Session session,  int num) throws Exception, HibernateException {
+        Transaction tr = session.beginTransaction();
+        List items;
+        Item item = new Item();
+        items = session.createQuery("from Item").list();
+        try {
+            session.save(item);
         } catch (HibernateException e) {
             tr.rollback();
             e.printStackTrace();

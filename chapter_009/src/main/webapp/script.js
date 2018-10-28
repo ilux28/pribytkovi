@@ -2,12 +2,12 @@ $(document).ready(getData());
 
 var el = document.getElementsByClassName('menu-item');
     for (var i = 0; i<el.length; i++) {
-        el[i].addEventListener("mouseover", showSub, false);
+        el[i].addEventListener("mouseenter", showSub, false);
         el[i].addEventListener("mouseleave", hideSub, false);
     }
     console.log("Exelent!");
 
-function showSub(el) {
+function showSub() {
     if (this.children.length>1) {
         this.cildren[1].style.height = "auto";
         this.cildren[1].style.overflow = "visible";
