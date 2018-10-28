@@ -1,13 +1,13 @@
 $(document).ready(getData());
-$(document).ready(function() {
-    var el = document.getElementsByClassName('menu-item');
+
+var el = document.getElementsByClassName('menu-item');
     for (var i = 0; i<el.length; i++) {
         el[i].addEventListener("mouseover", showSub, false);
         el[i].addEventListener("mouseleave", hideSub, false);
     }
     console.log("Exelent!");
-});
-function showSub(el) {
+
+function showSub() {
     if (this.children.length>1) {
         this.cildren[1].style.height = "auto";
         this.cildren[1].style.overflow = "visible";
@@ -17,7 +17,7 @@ function showSub(el) {
         return false;
     }
 }
-function hideSub(el) {
+function hideSub() {
     if (this.children.length>1) {
         this.cildren[1].style.height = "0px";
         this.cildren[1].style.overflow = "hidden";
