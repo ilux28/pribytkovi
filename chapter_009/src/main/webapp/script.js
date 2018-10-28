@@ -10,9 +10,9 @@ $(document).ready(function() {
 
 function showSub() {
     if (this.children.length>1) {
-        this.cildren[1].style.height = "auto";
-        this.cildren[1].style.overflow = "visible";
-        this.cildren[1].style.opacity = "1";
+        this.children[1].style.height = "auto";
+        this.children[1].style.overflow = "visible";
+        this.children[1].style.opacity = "1";
         console.log("showSub");
     } else {
         return false;
@@ -20,9 +20,9 @@ function showSub() {
 }
 function hideSub() {
     if (this.children.length>1) {
-        this.cildren[1].style.height = "0px";
-        this.cildren[1].style.overflow = "hidden";
-        this.cildren[1].style.opacity = "0";
+        this.children[1].style.height = "0px";
+        this.children[1].style.overflow = "hidden";
+        this.children[1].style.opacity = "0";
         console.log("hideSub");
     } else {
         return false;
