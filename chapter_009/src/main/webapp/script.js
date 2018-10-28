@@ -7,7 +7,7 @@ var el = document.getElementsByClassName('menu-item');
     }
     console.log("Exelent!");
 
-function showSub() {
+function showSub(el) {
     if (this.children.length>1) {
         this.cildren[1].style.height = "auto";
         this.cildren[1].style.overflow = "visible";
