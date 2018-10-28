@@ -1,11 +1,12 @@
 $(document).ready(getData());
-
-var el = document.getElementsByClassName('menu-item');
-    for (var i = 0; i<el.length; i++) {
+$(document).ready(function() {
+    var el = document.getElementsByClassName('menu-item');
+    for (var i = 0; i < el.length; i++) {
         el[i].addEventListener("mouseenter", showSub, false);
         el[i].addEventListener("mouseleave", hideSub, false);
     }
-    console.log("Exelent!");
+    console.log("Exelent!")
+});
 
 function showSub() {
     if (this.children.length>1) {
