@@ -12,15 +12,17 @@ function showSub() {
         this.cildren[1].style.height = "auto";
         this.cildren[1].style.overflow = "visible";
         this.cildren[1].style.opacity = "1";
+        console.log("showSub");
     } else {
         return false;
     }
 }
-function hideSub(e) {
+function hideSub() {
     if (this.children.length>1) {
         this.cildren[1].style.height = "0px";
         this.cildren[1].style.overflow = "hidden";
         this.cildren[1].style.opacity = "0";
+        console.log("hideSub");
     } else {
         return false;
     }
