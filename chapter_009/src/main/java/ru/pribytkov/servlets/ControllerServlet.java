@@ -38,13 +38,9 @@ public class ControllerServlet extends HttpServlet {
         boolean created = Boolean.parseBoolean(create);
         boolean done = Boolean.parseBoolean(don);
         List items = new ArrayList<Item>();
-        Session session = HibernateManager.getInstance().getSession();
-        items = session.createQuery("from Item").list();
-        System.out.println(items);
-        desc = "This is " + items.size() + 1  + " description of test";
         ItemsDAO itemDao = new ItemsDAO();
         try {
-            itemDao.addItem(session, desc, created, done);
+            itemDao.addItem(desc, created, done);
         } catch (Exception e) {
             e.printStackTrace();
         }

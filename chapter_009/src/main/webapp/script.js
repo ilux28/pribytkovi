@@ -1,12 +1,22 @@
 $(document).ready(getData());
 $(document).ready(function() {
     var el = document.getElementsByClassName('menu-item');
+    var eli = document.getElementsByClassName('sub-menu');
     for (var i = 0; i < el.length; i++) {
         el[i].addEventListener("mouseenter", showSub, false);
         el[i].addEventListener("mouseleave", hideSub, false);
     }
+    for (var i = 0; i < eli.length; i++) {
+        for (var j = 0; j < eli[i].childElementCount; j++) {
+            eli[i].children[j].addEventListener(onclick(), funcShow, false);
+        }
+    }
     console.log("Exelent!")
 });
+
+function funcShow() {
+
+}
 
 function showSub() {
     if (this.children.length>1) {

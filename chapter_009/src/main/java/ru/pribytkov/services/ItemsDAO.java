@@ -10,7 +10,11 @@ import ru.pribytkov.models.Item;
 import java.util.List;
 
 public class ItemsDAO {
-    public void addItem(Session session, String desc, boolean created, boolean done) throws Exception, HibernateException {
+    public void addItem(String desc, boolean created, boolean done) throws Exception, HibernateException {
+        Session session = HibernateManager.getInstance().getSession();
+        //items = session.createQuery("from Item").list();
+        //System.out.println(items);
+        //desc = "This is " + items.size() + 1  + " description of test";
         Transaction tr = session.beginTransaction();
         List items;
         Item item = new Item();
@@ -32,7 +36,8 @@ public class ItemsDAO {
             session.close();
         }
     }
-    public void deleteItem(Session session,  int num) throws Exception, HibernateException {
+    public void deleteItem(int num) throws Exception, HibernateException {
+        Session session = HibernateManager.getInstance().getSession();
         Transaction tr = session.beginTransaction();
         List items;
         Item item = new Item();
