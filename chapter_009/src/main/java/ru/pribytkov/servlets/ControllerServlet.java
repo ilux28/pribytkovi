@@ -38,12 +38,14 @@ public class ControllerServlet extends HttpServlet {
         String don = request.getParameter("done");
         boolean created = Boolean.parseBoolean(create);
         boolean done = Boolean.parseBoolean(don);
+        System.out.println(ide + " " + desc + " " + created + " " + done);
         List items = new ArrayList<Item>();
         ItemsDAO itemDao = new ItemsDAO();
         try {
-            if (ide == null) {
+            if (ide.isEmpty()) {
                 itemDao.addItem(desc, created, done);
-            } else {
+            }
+            else {
                 itemDao.deleteItem(id);
             }
         } catch (Exception e) {
