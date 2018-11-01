@@ -26,7 +26,7 @@ public class ItemsDAOTest {
         boolean created = true;
         boolean done = true;
         ItemsDAO itemDao = new ItemsDAO();
-        itemDao.addItem(session, desc, created, done);
+        itemDao.addItem(desc, created, done);
         factory.close();
     }
 }

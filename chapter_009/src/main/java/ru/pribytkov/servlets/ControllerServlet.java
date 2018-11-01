@@ -31,7 +31,8 @@ public class ControllerServlet extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(ControllerServlet.class);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
+        String ide = request.getParameter("id");
+        int id = Integer.parseInt(ide);
         String desc = request.getParameter("description");
         String create = request.getParameter("created");
         String don = request.getParameter("done");
@@ -40,7 +41,11 @@ public class ControllerServlet extends HttpServlet {
         List items = new ArrayList<Item>();
         ItemsDAO itemDao = new ItemsDAO();
         try {
-            itemDao.addItem(desc, created, done);
+            if (ide == null) {
+                itemDao.addItem(desc, created, done);
+            } else {
+                itemDao.deleteItem(id);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
