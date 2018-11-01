@@ -32,7 +32,10 @@ public class ControllerServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String ide = request.getParameter("id");
-        int id = Integer.parseInt(ide);
+        int id = 0;
+        if (!ide.isEmpty()) {
+            id = Integer.parseInt(ide);
+        }
         String desc = request.getParameter("description");
         String create = request.getParameter("created");
         String don = request.getParameter("done");
