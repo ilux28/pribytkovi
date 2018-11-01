@@ -6,11 +6,11 @@ $(document).ready(function() {
         el[i].addEventListener("mouseenter", showSub, false);
         el[i].addEventListener("mouseleave", hideSub, false);
     }
-    for (var i = 0; i < eli.length; i++) {
+    /*for (var i = 0; i < eli.length; i++) {
         for (var j = 0; j < eli[i].childElementCount; j++) {
             eli[i].children[j].addEventListener(onclick(), funcShow, false);
         }
-    }
+    }*/
     console.log("Exelent!")
 });
 
@@ -42,7 +42,7 @@ function sendData() {
     $.ajax('./add', {
         method: 'post',
         data: {
-            //id: document.getElementsByName("inputDescription").value,
+            id: document.getElementsByName("inputId").value,
             description: document.getElementById('inputDescription').value,
             created: document.getElementById('created').checked,
             done: document.getElementById('done').checked

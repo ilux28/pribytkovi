@@ -12,21 +12,15 @@ import java.util.List;
 public class ItemsDAO {
     public void addItem(String desc, boolean created, boolean done) throws Exception, HibernateException {
         Session session = HibernateManager.getInstance().getSession();
-        //items = session.createQuery("from Item").list();
-        //System.out.println(items);
-        //desc = "This is " + items.size() + 1  + " description of test";
         Transaction tr = session.beginTransaction();
         List items;
         Item item = new Item();
-        items = session.createQuery("from Item").list();
-        desc = desc + " " + items.size();
         item.setDesc(desc);
         item.setCreated(created);
         item.setDone(done);
         try {
             session.save(item);
-            items = session.createQuery("from Item").list();
-            System.out.println(items);
+            System.out.println();
         } catch (HibernateException e) {
             tr.rollback();
             e.printStackTrace();
@@ -36,14 +30,15 @@ public class ItemsDAO {
             session.close();
         }
     }
-    public void deleteItem(int num) throws Exception, HibernateException {
+    public void deleteItem(int itemId) throws Exception, HibernateException {
         Session session = HibernateManager.getInstance().getSession();
         Transaction tr = session.beginTransaction();
         List items;
         Item item = new Item();
-        items = session.createQuery("from Item").list();
+        item.setId(itemId);
+        //items = session.createQuery("from Item").list();
         try {
-            session.save(item);
+            session.delete(item);
         } catch (HibernateException e) {
             tr.rollback();
             e.printStackTrace();
