@@ -39,7 +39,7 @@ function hideSub() {
     }
 }
 function sendData() {
-    var formData = new FormData($('.add-forms'));
+    var formData = new FormData($('.add-forms')[0]);
     console.log(formData);
     $.ajax('./add', {
         method: 'post',
