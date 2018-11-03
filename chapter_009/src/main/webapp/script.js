@@ -39,6 +39,8 @@ function hideSub() {
     }
 }
 function sendData() {
+    var formData = new FormData($('.add-forms'));
+    console.log(formData);
     $.ajax('./add', {
         method: 'post',
         data: {
