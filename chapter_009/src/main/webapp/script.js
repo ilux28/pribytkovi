@@ -43,12 +43,17 @@ function sendData() {
     console.log(formData);
     $.ajax('./add', {
         method: 'post',
-        data: {
+        data: formData,
+/*{
             id: document.getElementsByName("inputId").value,
             description: document.getElementById('inputDescription').value,
             created: document.getElementById('created').checked,
             done: document.getElementById('done').checked
         },
+        */
+        processData: false,
+        contentType: false,
+        dataType: 'JSON',
         success : getData
     });
 }

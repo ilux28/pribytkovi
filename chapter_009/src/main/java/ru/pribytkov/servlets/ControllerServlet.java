@@ -31,32 +31,31 @@ public class ControllerServlet extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(ControllerServlet.class);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String ide = request.getParameter("id");
-        int id = 0;
-        if (!ide.isEmpty()) {
-            id = Integer.parseInt(ide);
-        }
+        String json = request.getParameter("formData");
+        System.out.println(json);
+        /*
+        String id = request.getParameter("id");
         String desc = request.getParameter("description");
         String create = request.getParameter("created");
         String don = request.getParameter("done");
         boolean created = Boolean.parseBoolean(create);
         boolean done = Boolean.parseBoolean(don);
-        System.out.println(ide + " " + desc + " " + created + " " + done);
+        System.out.println(id + " " + desc + " " + created + " " + done);
         List items = new ArrayList<Item>();
         ItemsDAO itemDao = new ItemsDAO();
         try {
-            if (ide.isEmpty()) {
+            if (id.isEmpty()) {
                 itemDao.addItem(desc, created, done);
             }
             else {
-                itemDao.deleteItem(id);
+                //itemDao.deleteItem(id);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         //request.getRequestDispatcher("/WEB-INF/index.html").forward(request, response);
         //response.sendRedirect(String.format("%s/index.html", request.getContextPath()));
-        
+        */
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json");
