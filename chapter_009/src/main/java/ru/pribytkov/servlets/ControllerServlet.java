@@ -31,8 +31,9 @@ public class ControllerServlet extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(ControllerServlet.class);
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String json = request.getParameter("formData");
-        System.out.println(json);
+        Item item = new ObjectMapper().readValue(request.getReader(), Item.class);
+
+        System.out.println(item.toString());
         /*
         String id = request.getParameter("id");
         String desc = request.getParameter("description");
