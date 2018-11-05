@@ -39,7 +39,7 @@ function hideSub() {
     }
 }
 function sendData() {
-    var formData = JSON.stringify($(".add-forms").serializeToString());
+    var formData = JSON.stringify($(".add-forms"));
         // new FormData($('.add-forms')[0]);
     console.log(formData);
     $.ajax('./add', {
