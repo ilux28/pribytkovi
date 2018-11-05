@@ -39,9 +39,11 @@ function hideSub() {
     }
 }
 function sendData() {
-    var formData = JSON.stringify($(".add-forms"));
+    //var formData = JSON.stringify($(".add-forms"));
+    var formData = $(".add-forms");
         // new FormData($('.add-forms')[0]);
     console.log(formData);
+    /*
     $.ajax('./add', {
         method: 'post',
         data: formData,
@@ -51,12 +53,13 @@ function sendData() {
             created: document.getElementById('created').checked,
             done: document.getElementById('done').checked
         },
-        */
+
         processData: false,
         contentType: false,
         dataType: 'JSON',
         success : getData
     });
+    */
 }
 function getData() {
     $.ajax("./add", {
