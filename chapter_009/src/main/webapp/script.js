@@ -39,14 +39,21 @@ function hideSub() {
     }
 }
 function sendData() {
-    //var formData = JSON.stringify($(".add-forms"));
+    var formData = JSON.stringify($(".add-forms :input"));
     var formArr = $(".add-forms :input");
-    var formArrStr = JSON.stringify($(".add-forms :input"));
-        // new FormData($('.add-forms')[0]);
+    console.log(formArr.length);
     console.log(formArr[0].value);
     console.log(formArr[0].name);
-    console.log(formArr[0]);
-    console.log(formArr);
+    var item = {};
+    for (var i = 0; i < formArr.length - 1; i++) {
+        item[formArr[i]['name']] = formArr[i]['value'];
+    }
+    var itemJSON = JSON.stringify(item);
+    console.log(item);
+    console.log(itemJSON);
+        // new FormData($('.add-forms')[0]);
+
+
     /*
     $.ajax('./add', {
         method: 'post',
