@@ -41,8 +41,10 @@ function hideSub() {
 function sendData() {
     //var formData = JSON.stringify($(".add-forms"));
     var formData = $(".add-forms");
+    var formArr = $(".add-forms :input");
         // new FormData($('.add-forms')[0]);
     console.log(formData);
+    console.log(formArr);
     /*
     $.ajax('./add', {
         method: 'post',
