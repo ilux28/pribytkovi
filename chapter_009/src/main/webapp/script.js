@@ -43,6 +43,7 @@ function sendData() {
     var formArr = $(".add-forms :input");
         // new FormData($('.add-forms')[0]);
     console.log(formArr[0].value);
+    console.log(formArr[0].name);
     console.log(formArr);
     /*
     $.ajax('./add', {
