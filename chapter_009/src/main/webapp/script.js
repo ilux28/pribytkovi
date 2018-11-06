@@ -43,16 +43,14 @@ function sendData() {
     var formArr = $(".add-forms :input");
     console.log(formArr.length);
     var item = {};
-    for (var j = 2; j = 3; j++) {
-        if (formArr[j]['value'] == 'on') {
-            formArr[j]['value'] = "true";
-        } else {
-            formArr[i]['value'] = "false";
-        }
-    }
     console.log(formArr);
     for (var i = 0; i < formArr.length - 1; i++) {
-        item[formArr[i]['name']] = formArr[i]['value'];
+        if (formArr[i]['type'] == 'checked') {
+            item[formArr[i]['name']] = formArr[i]['checked'];
+        } else {
+            item[formArr[i]['name']] = formArr[i]['value'];
+        }
+        console.log(formArr[i]['type']);
     }
     var itemJSON = JSON.stringify(item);
     console.log(item);
