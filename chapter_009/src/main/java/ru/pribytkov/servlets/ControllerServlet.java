@@ -32,8 +32,8 @@ public class ControllerServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Item item = new ObjectMapper().readValue(request.getReader(), Item.class);
-
         System.out.println(item.toString());
+
         /*
         String id = request.getParameter("id");
         String desc = request.getParameter("description");
