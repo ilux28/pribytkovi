@@ -39,11 +39,9 @@ function hideSub() {
     }
 }
 function sendData() {
-    var formData = JSON.stringify($(".add-forms :input"));
+
     var formArr = $(".add-forms :input");
     console.log(formArr.length);
-    console.log(formArr[0].value);
-    console.log(formArr[0].name);
     var item = {};
     for (var i = 0; i < formArr.length - 1; i++) {
         item[formArr[i]['name']] = formArr[i]['value'];
@@ -51,26 +49,21 @@ function sendData() {
     var itemJSON = JSON.stringify(item);
     console.log(item);
     console.log(itemJSON);
-        // new FormData($('.add-forms')[0]);
-
-
-    /*
     $.ajax('./add', {
         method: 'post',
-        data: formData,
+        data: itemJSON,
 /*{
             id: document.getElementsByName("inputId").value,
             description: document.getElementById('inputDescription').value,
             created: document.getElementById('created').checked,
             done: document.getElementById('done').checked
         },
-
+*/
         processData: false,
         contentType: false,
         dataType: 'JSON',
         success : getData
     });
-    */
 }
 function getData() {
     $.ajax("./add", {
@@ -78,7 +71,6 @@ function getData() {
         complete : function (data) {
             var table = document.getElementById("items");
             var items = JSON.parse(data.responseText);
-            console.log(items);
             for (var key in items) {
                 var itemKey = items[key];
                 var newI = document.createElement("tr");
