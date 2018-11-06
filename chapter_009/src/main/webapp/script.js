@@ -45,7 +45,7 @@ function sendData() {
     var item = {};
     console.log(formArr);
     for (var i = 0; i < formArr.length - 1; i++) {
-        if (formArr[i]['type'] == 'checked') {
+        if (formArr[i].type == 'checkbox') {
             item[formArr[i]['name']] = formArr[i]['checked'];
         } else {
             item[formArr[i]['name']] = formArr[i]['value'];
