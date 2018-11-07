@@ -33,7 +33,19 @@ public class ControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Item item = new ObjectMapper().readValue(request.getReader(), Item.class);
         System.out.println(item.toString());
-
+        /*
+        System.out.println(item.getId());
+        System.out.println(item.getDesc());
+        System.out.println(item.isCreated());
+        System.out.println(item.isDone());
+        */
+        if (item.getId() != 0 && item.getDesc().isEmpty()) {
+            System.out.println("item.getId() != 0 && item.getDesc().isEmpty()");
+        } else if (item.getId() == 0 && !item.getDesc().isEmpty()) {
+            System.out.println("item.getId() == 0 && !item.getDesc().isEmpty()");
+        } else {
+            System.out.println("item.getId() != 0 && !item.getDesc().isEmpty()");
+        }
         /*
         String id = request.getParameter("id");
         String desc = request.getParameter("description");
