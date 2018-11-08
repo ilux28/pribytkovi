@@ -45,6 +45,7 @@ tr {
 }
 h3 {
     background-color: blue;
+    width: 50px;
 }
 .menu-main {
   background-color: brown;
