@@ -29,7 +29,6 @@ import org.json.JSONObject;
 @WebServlet(name = "ControllerServlet")
 public class ControllerServlet extends HttpServlet {
     private static final Logger log = LoggerFactory.getLogger(ControllerServlet.class);
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Item item = new ObjectMapper().readValue(request.getReader(), Item.class);
         System.out.println(item.toString());

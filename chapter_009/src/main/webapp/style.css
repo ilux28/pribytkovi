@@ -43,4 +43,9 @@ tr {
     opacity: 0;
     transition: all 0.5s ease-in;
 }
-
+h3 {
+    background-color: blue;
+}
+.menu-main {
+  background-color: brown;
+}
