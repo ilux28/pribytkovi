@@ -9,12 +9,12 @@
 }
 .checkbox {
     width: 100px;
-    margin-top: 120px;
+    margin-top: 160px;
     margin-left: 420px;
     background-color: aqua; /* цвет фона*/
 }
 .btn-primary {
-    margin-left: 420px;
+    margin-top: 140px;
 }
 .layer {
     margin-left: 220px;
@@ -33,6 +33,7 @@ tr {
 }
 .warp {
     margin-left: 420px;
+    margin-top: 180px;
 }
 #myButton {
     background-color: transparent;
@@ -49,7 +50,6 @@ h3 {
 }
 .menu-main {
     position: absolute;
-    background-color: brown;
     width: 15%;
 }
 
