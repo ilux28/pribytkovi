@@ -46,21 +46,21 @@
             </li>
         </ul>
     </div>
-                <form class="add-forms">
-                    <div class="form-group">
-                        <label for="inputId">Id: </label>
-                        <input type="number" class="form-control" name="Number" id="inputId" placeholder="Id">
-                        <label for="inputDescription">Description: </label>
-                        <input type="text" class="form-control" name="Description" id="inputDescription" placeholder="Description">
-                        <label><input type="checkbox" name="Created" id="created">Created: </label>
-                        <label><input type="checkbox" name="Done" id="done">Done: </label>
-                    </div>
+        <form class="add-forms">
+            <div class="form-group">
+                <label for="inputId">Id: </label>
+                <input type="number" class="form-control" name="Number" id="inputId" placeholder="Id">
+                <label for="inputDescription">Description: </label>
+                <input type="text" class="form-control" name="Description" id="inputDescription" placeholder="Description">
+                <label><input type="checkbox" name="Created" id="created">Created: </label>
+                <label><input type="checkbox" name="Done" id="done">Done: </label>
+                <div class="warp">
+                    <input type="button" id="myButton" value="Execute operation" onclick="sendData()">
+                </div>
+            </div>
                     <div class="checkbox">
                     </div>
                     <!--<input type="button" id="myButton" value="Add item" onclick="sendAjaxItem();"> -->
-                    <div class="warp">
-                        <input type="button" id="myButton" value="Execute operation" onclick="sendData()">
-                    </div>
                 </form>
         <div class="center">
             <table id="items" style="border: 1px solid #000000" border="1" cellpadding="1" cellspacing="0">
