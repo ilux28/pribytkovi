@@ -48,7 +48,8 @@ h3 {
     width: 100%;
 }
 .menu-main {
-  background-color: brown;
-  width: 15%;
+    position: absolute;
+    background-color: brown;
+    width: 15%;
 }
 
