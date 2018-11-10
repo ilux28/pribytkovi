@@ -89,7 +89,8 @@ function getData() {
                 table.appendChild(newI);
             }
         }
-    })
+    }),
+        console.log("Receive data success!")
 }
 
 
