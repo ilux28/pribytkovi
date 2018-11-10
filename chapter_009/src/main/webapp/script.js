@@ -65,8 +65,8 @@ function sendData() {
             done: document.getElementById('done').checked
         },
 */
-        processData: false,
-        contentType: false,
+        //processData: false,
+        //contentType: false,
         dataType: 'JSON',
         success : getData
     });
