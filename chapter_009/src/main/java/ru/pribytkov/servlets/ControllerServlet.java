@@ -38,13 +38,29 @@ public class ControllerServlet extends HttpServlet {
         System.out.println(item.isCreated());
         System.out.println(item.isDone());
         */
+        ItemsDAO itemsDAO = new ItemsDAO();
+        String str = "";
         if (item.getId() != 0 && item.getDesc().isEmpty()) {
-            System.out.println("item.getId() != 0 && item.getDesc().isEmpty()");
+            try {
+                itemsDAO.deleteItem((int) item.getId());
+                str = "Deleted item is a number " + item.getId();
+            } catch (Exception e) {
+                e.printStackTrace();
+                str = "error by deleted";
+            }
         } else if (item.getId() == 0 && !item.getDesc().isEmpty()) {
-            System.out.println("item.getId() == 0 && !item.getDesc().isEmpty()");
+            try {
+                itemsDAO.addItem(item.getDesc(), item.isCreated(), item.isDone());
+                str = "Added item";
+            } catch (Exception e) {
+                e.printStackTrace();
+                str = "error ";
+            }
         } else {
-            System.out.println("item.getId() != 0 && !item.getDesc().isEmpty()");
+
+            str = "Edit of items with number" + item.getId();
         }
+        System.out.println(str);
         /*
         String id = request.getParameter("id");
         String desc = request.getParameter("description");

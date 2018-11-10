@@ -48,4 +48,25 @@ public class ItemsDAO {
             session.close();
         }
     }
+    public void updateItem(int itemId, String desc, boolean created, boolean done) throws Exception, HibernateException {
+        Session session = HibernateManager.getInstance().getSession();
+        Transaction tr = session.beginTransaction();
+        List items;
+        Item item = new Item();
+        item.setId(itemId);
+        item.setDesc(desc);
+        item.setCreated(created);
+        item.setDone(done);
+        //items = session.createQuery("from Item").list();
+        try {
+            session.save(item);
+        } catch (HibernateException e) {
+            tr.rollback();
+            e.printStackTrace();
+            throw e;
+        } finally {
+            tr.commit();
+            session.close();
+        }
+    }
 }
