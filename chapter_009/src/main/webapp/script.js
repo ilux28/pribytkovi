@@ -75,6 +75,7 @@ function getData() {
         method: 'get',
         complete : function (data) {
             var table = document.getElementById("items");
+            console.log(table.length);
             for (var k = 0; i < table.length; i++) {
                 table.deleteRow(k);
             }
