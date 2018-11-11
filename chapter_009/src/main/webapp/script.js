@@ -44,7 +44,7 @@ function sendData() {
     var item = {};
     console.log(formArr);
     for (var i = 0; i < formArr.length - 1; i++) {
-        if (formArr[i].type == 'checkbox') {
+        if (formArr[i].type === 'checkbox') {
             item[formArr[i]['name']] = formArr[i]['checked'];
         } else {
             item[formArr[i]['name']] = formArr[i]['value'];
@@ -74,7 +74,9 @@ function getData() {
     $.ajax("./add", {
         method: 'get',
         complete : function (data) {
+            /*
             var table = document.getElementById("items");
+
             console.log(table.length);
             for (var k = 0; i < table.length; i++) {
                 table.deleteRow(k);
@@ -93,6 +95,21 @@ function getData() {
                 table.appendChild(newI);
             }
             console.log("Receive data success!");
+            */
+            var $tbody = $("#items tbody");
+            $tbody.empty();
+            console.log($tbody);
+            var items = JSON.parse(data.responseText);
+            for (var key in items) {
+                var item = items[key];
+                var $tr = $("<tr/>");
+                for (keyz in item) {
+                    var $td = $("<td/>").text(item[keyz]);
+                    $tr.append($td);
+                }
+                console.log($tr);
+                $tbody.append($tr);
+            }
         }
     })
 }
