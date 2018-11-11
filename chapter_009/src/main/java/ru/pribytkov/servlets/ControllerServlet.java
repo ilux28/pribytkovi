@@ -57,8 +57,14 @@ public class ControllerServlet extends HttpServlet {
                 str = "error ";
             }
         } else {
+            try {
+                itemsDAO.updateItem((int) item.getId(), item.getDesc(), item.isCreated(), item.isDone());
+                str = "Edit of items with number " + item.getId();
+            } catch (Exception e) {
+                e.printStackTrace();
+                str = "Error by edit " + item.getId();
+            }
 
-            str = "Edit of items with number" + item.getId();
         }
         System.out.println(str);
         /*
