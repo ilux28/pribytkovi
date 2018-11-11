@@ -67,7 +67,7 @@ function sendData() {
         //processData: false,
         //contentType: false,
         dataType: 'JSON',
-        success : getData
+        complete: getData
     });
 }
 function getData() {
