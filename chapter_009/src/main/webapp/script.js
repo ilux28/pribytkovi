@@ -75,6 +75,9 @@ function getData() {
         method: 'get',
         complete : function (data) {
             var table = document.getElementById("items");
+            for (var i = 0; i < table.length; i++) {
+                table.deleteRow(i);
+            }
             var items = JSON.parse(data.responseText);
             for (var key in items) {
                 var itemKey = items[key];
