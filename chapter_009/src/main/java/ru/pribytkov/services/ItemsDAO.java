@@ -59,7 +59,7 @@ public class ItemsDAO {
         item.setDone(done);
         //items = session.createQuery("from Item").list();
         try {
-            session.save(item);
+            session.update(item);
         } catch (HibernateException e) {
             tr.rollback();
             e.printStackTrace();
