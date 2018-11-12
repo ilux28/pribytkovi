@@ -46,6 +46,9 @@
             </li>
         </ul>
     </div>
+    <div class="sort">
+    <label><input type="checkbox" name="Sorted" id="sorted">Sorted by done </label>
+    </div>
         <form class="add-forms">
             <div class="form-group">
                 <label for="inputId">Id: </label>
@@ -54,8 +57,8 @@
                 <input type="text" class="form-control" name="Description" id="inputDescription" placeholder="Description">
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="Created" id="created">Created: </label>
-                <label><input type="checkbox" name="Done" id="done">Done: </label>
+                <label><input type="checkbox" name="Created" id="created">Created </label>
+                <label><input type="checkbox" name="Done" id="done">Done </label>
             </div>
             <div class="warp">
                 <input type="button" id="myButton" value="Execute operation" onclick="sendData()">

@@ -113,6 +113,7 @@ function getData() {
         }
     })
 }
+$('#sorted').on('click', function(e) { console.log('test'); });
 
 
 

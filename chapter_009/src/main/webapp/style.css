@@ -7,11 +7,17 @@
     background: #fc0;
     padding: 20px;/* Поля вокруг текста*/
 }
+
 .checkbox {
     width: 100px;
-    margin-top: 160px;
+    margin-top: 130px;
     margin-left: 420px;
     background-color: aqua; /* цвет фона*/
+}
+.sort {
+    width: 150px;
+    margin-left: 950px;
+    background-color: olivedrab; /* цвет фона*/
 }
 .btn-primary {
     margin-top: 140px;
@@ -51,4 +57,5 @@ h3 {
     position: absolute;
     width: 15%;
 }
+
 
