@@ -67,19 +67,24 @@ function getData() {
     $.ajax("./add", {
         method: 'get',
         complete : function (data) {
-            //var $check = $('#sorted');
+            var $check = $('#sorted').is(':checked');
             var $tbody = $("#items tbody");
             $tbody.empty();
-            console.log($tbody);
             var items = JSON.parse(data.responseText);
             for (var key in items) {
                 var item = items[key];
                 var $tr = $("<tr/>");
-                for (keyz in item) {
-                    var $td = $("<td/>").text(item[keyz]);
-                    $tr.append($td);
+                for (var keyIt in item) {
+                    var $td = $("<td/>").text(item[keyIt]);
+                    console.log(item.Done);
+                    if ($check === true) {
+                        if (item.Done === true) {
+                            $tr.append($td);
+                        }
+                    } else {
+                        $tr.append($td);
+                    }
                 }
-                console.log($tr);
                 $tbody.append($tr);
             }
         }
@@ -87,11 +92,7 @@ function getData() {
 }
 $(document).ready(function(){
     $('#sorted').click(function(){
-        var $check = $('#sorted').is(':checked');
-        console.log($check);
-        var $tableLength = $('#items>tbody>tr').length;
-        console.log($tableLength);
-        //var $rowLength = $('#items>tbody>td').length;
+        getData();
     });
 });
 /*
