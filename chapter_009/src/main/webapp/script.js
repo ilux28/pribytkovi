@@ -57,13 +57,6 @@ function sendData() {
     $.ajax('./add', {
         method: 'post',
         data: itemJSON,
-/*{
-            id: document.getElementsByName("inputId").value,
-            description: document.getElementById('inputDescription').value,
-            created: document.getElementById('created').checked,
-            done: document.getElementById('done').checked
-        },
-*/
         //processData: false,
         //contentType: false,
         dataType: 'JSON',
@@ -74,28 +67,7 @@ function getData() {
     $.ajax("./add", {
         method: 'get',
         complete : function (data) {
-            /*
-            var table = document.getElementById("items");
-
-            console.log(table.length);
-            for (var k = 0; i < table.length; i++) {
-                table.deleteRow(k);
-            }
-            var items = JSON.parse(data.responseText);
-            for (var key in items) {
-                var itemKey = items[key];
-                var newI = document.createElement("tr");
-                var i = 0;
-                for (keyz in itemKey) {
-                    var newV = document.createElement("td");
-                    newV.innerHTML = itemKey[keyz];
-                    newI.insertBefore(newV, newI.children[i]);
-                    i++;
-                }
-                table.appendChild(newI);
-            }
-            console.log("Receive data success!");
-            */
+            //var $check = $('#sorted');
             var $tbody = $("#items tbody");
             $tbody.empty();
             console.log($tbody);
@@ -113,7 +85,37 @@ function getData() {
         }
     })
 }
-$('#sorted').on('click', function(e) { console.log('test'); });
+$(document).ready(function(){
+    $('#sorted').click(function(){
+        var $check = $('#sorted').is(':checked');
+        console.log($check);
+        var $tableLength = $('#items>tbody>tr').length;
+        console.log($tableLength);
+        //var $rowLength = $('#items>tbody>td').length;
+    });
+});
+/*
+           var table = document.getElementById("items");
+
+           console.log(table.length);
+           for (var k = 0; i < table.length; i++) {
+               table.deleteRow(k);
+           }
+           var items = JSON.parse(data.responseText);
+           for (var key in items) {
+               var itemKey = items[key];
+               var newI = document.createElement("tr");
+               var i = 0;
+               for (keyz in itemKey) {
+                   var newV = document.createElement("td");
+                   newV.innerHTML = itemKey[keyz];
+                   newI.insertBefore(newV, newI.children[i]);
+                   i++;
+               }
+               table.appendChild(newI);
+           }
+           console.log("Receive data success!");
+           */
 
 
 
