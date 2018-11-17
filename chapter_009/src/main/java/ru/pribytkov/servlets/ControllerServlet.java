@@ -32,12 +32,6 @@ public class ControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Item item = new ObjectMapper().readValue(request.getReader(), Item.class);
         System.out.println(item.toString());
-        /*
-        System.out.println(item.getId());
-        System.out.println(item.getDesc());
-        System.out.println(item.isCreated());
-        System.out.println(item.isDone());
-        */
         ItemsDAO itemsDAO = new ItemsDAO();
         String str = "";
         if (item.getId() != 0 && item.getDesc().isEmpty()) {
@@ -67,29 +61,6 @@ public class ControllerServlet extends HttpServlet {
 
         }
         System.out.println(str);
-        /*
-        String id = request.getParameter("id");
-        String desc = request.getParameter("description");
-        String create = request.getParameter("created");
-        String don = request.getParameter("done");
-        boolean created = Boolean.parseBoolean(create);
-        boolean done = Boolean.parseBoolean(don);
-        System.out.println(id + " " + desc + " " + created + " " + done);
-        List items = new ArrayList<Item>();
-        ItemsDAO itemDao = new ItemsDAO();
-        try {
-            if (id.isEmpty()) {
-                itemDao.addItem(desc, created, done);
-            }
-            else {
-                //itemDao.deleteItem(id);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //request.getRequestDispatcher("/WEB-INF/index.html").forward(request, response);
-        //response.sendRedirect(String.format("%s/index.html", request.getContextPath()));
-        */
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/json");

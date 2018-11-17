@@ -11,32 +11,21 @@ import java.util.List;
 
 public class ItemsDAO {
     public void addItem(String desc, boolean created, boolean done) throws Exception, HibernateException {
-        Session session = HibernateManager.getInstance().getSession();
-        Transaction tr = session.beginTransaction();
-        List items;
+        //Session session = HibernateManager.getInstance().getSession();
+        //Transaction tr = session.beginTransaction();
         Item item = new Item();
         item.setDesc(desc);
         item.setCreated(created);
         item.setDone(done);
-        try {
-            session.save(item);
-            System.out.println();
-        } catch (HibernateException e) {
-            tr.rollback();
-            e.printStackTrace();
-            throw e;
-        } finally {
-            tr.commit();
-            session.close();
-        }
+        HibernateManager.getInstance().tr(
+                session -> session.save(item)
+        );
     }
     public void deleteItem(int itemId) throws Exception, HibernateException {
         Session session = HibernateManager.getInstance().getSession();
         Transaction tr = session.beginTransaction();
-        List items;
         Item item = new Item();
         item.setId(itemId);
-        //items = session.createQuery("from Item").list();
         try {
             session.delete(item);
         } catch (HibernateException e) {
@@ -51,13 +40,11 @@ public class ItemsDAO {
     public void updateItem(int itemId, String desc, boolean created, boolean done) throws Exception, HibernateException {
         Session session = HibernateManager.getInstance().getSession();
         Transaction tr = session.beginTransaction();
-        List items;
         Item item = new Item();
         item.setId(itemId);
         item.setDesc(desc);
         item.setCreated(created);
         item.setDone(done);
-        //items = session.createQuery("from Item").list();
         try {
             session.update(item);
         } catch (HibernateException e) {
